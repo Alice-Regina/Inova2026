@@ -15,10 +15,12 @@
     --spacing-24: 5rem; /* 80px */
   }
 
+
   .container {
     padding: 0 var(--spacing-4);
   }
 
+  
   /* secao de cabecalho */
   .header {
     top: 15px;
