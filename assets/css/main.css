@@ -1,13 +1,13 @@
 /* ===== CSS CUSTOM PROPERTIES ===== */
 :root {
   /* Colors - Paleta Especificada */
-  --primary-color: #3b92a2;
-  --secondary-color: #8b61c2;
-  --accent-color: #4d0d9f;
-  --gradient-primary: linear-gradient(135deg, #3b92a2 0%, #8b61c2 50%, #4d0d9f 100%);
-  --gradient-secondary: linear-gradient(45deg, #3b92a2, #8b61c2, #4d0d9f, #3b92a2);
-  --gradient-accent: linear-gradient(90deg, #8b61c2 0%, #4d0d9f 100%);
+ --primary-color: #085834;      /* Verde Escuro / Base */
+  --secondary-color: #3DAE49;    /* Verde Vibrante / Meio */
+  --accent-color: #F0D000;       /* Amarelo Brilhante / Destaque */
   
+  --gradient-primary: linear-gradient(135deg, #F0D000 0%, #3DAE49 50%, #085834 100%);
+  --gradient-secondary: linear-gradient(45deg, #F0D000, #8BC53F, #3DAE49, #085834);
+  --gradient-accent: linear-gradient(90deg, #F0D000 0%, #3DAE49 100%);
   /* Neutral Colors */
   --white: #ffffff;
   --light-gray: #f8f9fa;

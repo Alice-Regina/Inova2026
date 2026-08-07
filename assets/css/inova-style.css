@@ -6,7 +6,30 @@
   font-family: "Unbounded", sans-serif;
 
 }
-
+:root {
+  /* Colors - Paleta Especificada */
+ --primary-color: #085834;      /* Verde Escuro / Base */
+  --secondary-color: #3DAE49;    /* Verde Vibrante / Meio */
+  --accent-color: #F0D000;       /* Amarelo Brilhante / Destaque */
+  
+  --gradient-primary: linear-gradient(135deg, #F0D000 0%, #3DAE49 50%, #085834 100%);
+  --gradient-secondary: linear-gradient(45deg, #F0D000, #8BC53F, #3DAE49, #085834);
+  --gradient-accent: linear-gradient(90deg, #F0D000 0%, #3DAE49 100%);
+  /* Neutral Colors */
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+  --gray-100: #f1f3f4;
+  --gray-200: #e8eaed;
+  --gray-300: #dadce0;
+  --gray-400: #bdc1c6;
+  --gray-500: #9aa0a6;
+  --gray-600: #80868b;
+  --gray-700: #5f6368;
+  --gray-800: #3c4043;
+  --gray-900: #202124;
+  --dark-gray: #2d3748;
+  --black: #1a202c;
+}
 /* Header */
 .header-inova {
 
@@ -34,11 +57,11 @@
 
 .header-inova.header-scrolled {
 
-  background: rgba(77, 13, 159, 0.95);
+  background: var(--gradient-primary);
 
   backdrop-filter: blur(20px);
 
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px var(--black);
 
 }
 
@@ -46,11 +69,11 @@
 
 .header-inova.header-solid {
 
-  background: linear-gradient(135deg, #4d0d9f 0%, #8b61c2 100%);
+  background: var(--gradient-primary);
 
   backdrop-filter: blur(20px);
 
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px var(--primary-color);
 
 }
 
@@ -62,7 +85,7 @@
 
 .header-inova.header-solid .nav-link-inova {
 
-  color: white;
+  color: var(--white);
 
 }
 
@@ -72,7 +95,7 @@
 
 .header-inova.header-solid .nav-link-inova:hover {
 
-  color: #3b92a2;
+  color: var(--accent-color);
 
 }
 
@@ -82,7 +105,7 @@
 
 .header-inova.header-solid .nav-toggle-inova .bar {
 
-  background: white;
+  background: var(--accent-color);
 
 }
 
@@ -208,7 +231,7 @@
 
 .nav-link-inova:hover {
 
-  color: #3b92a2;
+  color: #f2f2f2;
 
   transform: translateY(-2px);
 
@@ -218,7 +241,7 @@
 
 .nav-link-inova.active {
 
-  color: #3b92a2;
+  color: var(--white);
 
 }
 
@@ -240,7 +263,7 @@
 
   border-radius: 5px;
 
-  background: #3b92a2;
+  background: var(--accent-color);
 
   transition: width 0.3s ease;
 
@@ -266,7 +289,7 @@
 
 .nav-link-highlight {
 
-  color: #3b92a2;
+  color: var(--accent-color);
 
   border-radius: 8px;
 
@@ -300,7 +323,7 @@
 
   border-radius: 5px;
 
-  background: #3b92a2;
+  background: var(--white);
 
   transition: width 0.3s ease;
 
@@ -346,72 +369,54 @@
 
 /* Hero Inova Section */
 
+
+/* Parei aqui */
 .hero-inova {
+  /* Substituído o linear-gradient antigo pela imagem de fundo com overlay escuro */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.185), rgba(0, 0, 0, 0)), 
+    url('/assets/images/hero-agricultor.png'); /* Altere o caminho da imagem se necessário */
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  background: linear-gradient(135deg, #4d0d9f 0%, #8b61c2 50%, #3b92a2 100%);
-
-  min-height: 100vh;
-
-  color: white;
-
+  min-height: 95vh;
+  color: var(--white);
   overflow: hidden;
-
   position: relative;
-
   padding-top: 90px;
-
 }
 
 
-
 .hero-inova::before {
-
   content: "";
-
   position: absolute;
-
   top: 0;
-
   left: 0;
-
   right: 0;
-
   bottom: 0;
-
-  background: radial-gradient(
-
+  background: 
+    /* Brilho de iluminação superior em branco */
+    radial-gradient(
       circle at 20% 20%,
-
-      rgba(139, 97, 194, 0.3) 0%,
-
+      rgba(255, 255, 255, 0.3) 0%,
       transparent 50%
-
     ),
-
+    /* Ponto de luz em Amarelo Dourado (#F0D000) no canto inferior */
     radial-gradient(
-
       circle at 80% 80%,
-
-      rgba(59, 146, 162, 0.3) 0%,
-
+      rgba(240, 208, 0, 0.25) 0%,
       transparent 50%
-
     ),
-
+    /* Ponto de luz em Verde Escuro (#085834) no centro/base */
     radial-gradient(
-
       circle at 40% 60%,
-
-      rgba(77, 13, 159, 0.2) 0%,
-
+      rgba(8, 88, 52, 0.25) 0%,
       transparent 50%
-
     );
-
   pointer-events: none;
-
   z-index: 0;
-
 }
 
 
@@ -482,7 +487,7 @@
 
   font-weight: 900;
 
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--primary-color);
 
   margin-bottom: 20px;
 
@@ -506,7 +511,7 @@
 
   margin-bottom: 20px;
 
-  background: white;
+  background: var(--primary-color);
 
   background-size: 200% 200%;
 
@@ -548,7 +553,7 @@
 
   font-weight: 500;
 
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--primary-color);
 
   margin-bottom: 40px;
 
@@ -570,7 +575,7 @@
 
   font-size: 16px;
 
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--primary-color);
 
   margin-bottom: 5px;
 
@@ -596,9 +601,9 @@
 
 .countdown-item-inova {
 
-  border: 4px solid #ffffff;
+  border: 4px solid var(--primary-color);
 
-  border-radius: 35px;
+  border-radius: 25px;
 
   padding: 15px 19px;
 
@@ -606,7 +611,7 @@
 
   min-width: 90px;
 
-  box-shadow: 0 4px 15px rgba(74, 21, 112, 0.3);
+  box-shadow: 0 5px 16px var(--primary-color);
 
 }
 
@@ -618,7 +623,7 @@
 
   font-weight: 600;
 
-  color: white;
+  color: var(--primary-color);
 
   margin-bottom: 8px;
 
@@ -658,7 +663,7 @@
 
   font-weight: 600;
 
-  color: white;
+  color: var(--primary-color);
 
   letter-spacing: 1px;
 
@@ -672,7 +677,7 @@
 
 .cta-button-inova {
 
-  background: linear-gradient(45deg, #8b61c2, #3b92a2);
+  background: linear-gradient(90deg, #F0D000 0%, #3DAE49 100%);
 
   border: none;
 
@@ -680,7 +685,7 @@
 
   border-radius: 50px;
 
-  color: white;
+  color: rgb(255, 255, 255);
 
   font-weight: 600;
 
@@ -714,13 +719,12 @@
 
 .cta-button-inova:hover {
 
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 
-  box-shadow: 0 12px 35px rgba(139, 97, 194, 0.5);
+  box-shadow: 0 12px 35px rgba(4, 254, 0, 0.5);
 
-  background: linear-gradient(45deg, #9d72d4, #4da3b3);
-
-  color: white;
+  background: linear-gradient(135deg, #F0D000 0%, #3DAE49 50%, #085834 100%);
+  color: rgb(255, 255, 255);
 
 }
 
@@ -784,7 +788,7 @@
 
     circle,
 
-    rgba(139, 97, 194, 0.1) 0%,
+    rgba(183, 183, 183, 0.1) 0%,
 
     transparent 70%
 
@@ -940,11 +944,11 @@
 
 .about-section-inova {
 
-  background: rgba(0, 0, 0, 0.13);
+  background: rgba(0, 0, 0, 0.123);
 
   backdrop-filter: blur(10px);
 
-  border: 5px solid white;
+  border: 5px solid rgba(4, 254, 0, 0.606);
 
   border-radius: 24px;
 
@@ -966,9 +970,9 @@
 
 .about-badge {
 
-  background: rgba(0, 0, 0, 0.082);
+  background: rgba(149, 31, 31, 0.082);
 
-  color: #3b92a2;
+  color: #088c34;
 
   padding: 8px 16px;
 
@@ -998,7 +1002,7 @@
 
   margin-bottom: 20px;
 
-  color: white;
+  color: #3DAE49; 
 
 }
 
@@ -1010,7 +1014,7 @@
 
   height: 4px;
 
-  background: #fff;
+  background: #f9f9f9;
 
   border-radius: 2px;
 
@@ -1058,9 +1062,9 @@
 
   overflow: hidden;
 
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35),
+  box-shadow: 0 24px 48px rgba(18, 154, 0, 0.35),
 
-    0 0 0 1px rgba(255, 255, 255, 0.08);
+    0 0 0 1px rgba(14, 78, 0, 0.08);
 
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -1134,7 +1138,7 @@
 
   font-weight: 500;
 
-  color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
 
   letter-spacing: 2px;
 
@@ -1170,7 +1174,7 @@
 
   justify-content: center;
 
-  color: white;
+  color:var(--primary-color) ;
 
   text-decoration: none;
 
@@ -1186,7 +1190,7 @@
 
   transform: translateX(2px);
 
-  color: #3b92a2;
+  color: #104908;
 
 }
 
@@ -1234,7 +1238,7 @@
 
   right: 0;
 
-  background: rgba(77, 13, 159, 0.98);
+  background: #085834;
 
   backdrop-filter: blur(20px);
 
