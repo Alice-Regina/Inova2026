@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
+import heroAgricultor from "../images/hero-agricultor.png";
 
 interface TimeLeft {
   days: number;
@@ -62,9 +63,6 @@ export default function Hero() {
           {/* Left content */}
           <div className="w-1/2 px-16 py-12 flex flex-col justify-center space-y-8 overflow-hidden">
             <div className="space-y-4">
-              <p className="font-semibold text-sm md:text-base uppercase tracking-widest" style={{ color: '#86D72F' }}>
-                Evento Fictício • 2026
-              </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
                 O Futuro do Agronegócio É{' '}
                 <span style={{ color: '#86D72F' }}>Agora</span>
@@ -89,9 +87,9 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button 
+              <button
                 className="px-8 py-3 font-bold rounded-lg transition-all duration-200 ease-out"
-                style={{ 
+                style={{
                   backgroundColor: '#F5B700',
                   color: '#081E13',
                   transform: 'scale(1)'
@@ -101,9 +99,9 @@ export default function Hero() {
               >
                 Inscreva-se Agora
               </button>
-              <button 
+              <button
                 className="px-8 py-3 flex items-center justify-center gap-2 rounded-lg transition-all duration-200 ease-out border-2"
-                style={{ 
+                style={{
                   borderColor: '#FFFFFF',
                   color: '#FFFFFF',
                   backgroundColor: 'transparent',
@@ -129,18 +127,18 @@ export default function Hero() {
           {/* Right side - Full-width image */}
           <div className="w-1/2 h-full relative overflow-hidden">
             <img
-              src="/manus-storage/hero-agtech_0e4a2e12.jpg"
+              src={heroAgricultor}
               alt="Futuro do Agronegócio"
               className="w-full h-full object-cover"
             />
             {/* Overlay gradient */}
-            <div 
+            <div
               className="absolute inset-0"
               style={{ backgroundImage: 'linear-gradient(to top, rgba(8, 30, 19, 0.4), transparent)' }}
             />
 
             {/* Countdown Card - Glassmorphism */}
-            <div 
+            <div
               className="absolute bottom-8 left-8 right-8 p-8 rounded-2xl border"
               style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
