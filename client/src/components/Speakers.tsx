@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Speakers() {
   const speakers = [
     {
@@ -33,45 +35,63 @@ export default function Speakers() {
   ];
 
   return (
-    <section id="palestrantes" className="section-padding bg-gradient-to-b from-slate-900-2 to-slate-900 relative overflow-hidden">
+    <section id="palestrantes" className="section-padding bg-slate-50 relative overflow-hidden py-16 md:py-24">
       {/* Background elements */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-color-green-neon/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-color-green-neon/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="container relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Nossos Palestrantes</h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Líderes e especialistas que estão transformando o agronegócio.
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Nossos Palestrantes</h2>
+          <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
+            Líderes e especialistas que estão transformando o agronegócio e a tecnologia.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* 
+            Grid Responsivo Seguro:
+            - Mobile: 1 coluna com largura máxima controlada (max-w-xs) para não ficar gigante
+            - Tablet (sm): 2 colunas
+            - Desktop (lg): 3 colunas impecáveis
+        */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {speakers.map((speaker, idx) => (
             <div
               key={idx}
-              className="group relative rounded-2xl overflow-hidden h-96 cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden h-80 sm:h-80 md:h-96 w-full max-w-xs sm:max-w-none mx-auto p-[2px] cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300"
             >
-              {/* Image */}
-              <img
-                src={speaker.image}
-                alt={speaker.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
+              {/* 1. Borda Neon Giratória (Cobrinha) */}
+              <div className="absolute inset-0 bg-gradient-to-r from-color-green-neon via-transparent to-color-green-neon animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* 2. Conteúdo do Card (Mantido escuro para destacar a foto e o texto branco do palestrante) */}
+              <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-900 z-10">
+                <img
+                  src={speaker.image}
+                  alt={speaker.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
 
-              {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                <h3 className="text-xl font-bold text-white mb-1">{speaker.name}</h3>
-                <p className="text-sm text-green-500">{speaker.role}</p>
+                {/* Sombra inferior para legibilidade do texto interno */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 transition-opacity duration-300" />
+
+                {/* Dados do Palestrante */}
+                <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-1 group-hover:text-color-green-neon transition-colors duration-300">
+                    {speaker.name}
+                  </h3>
+                  <p className="text-xs md:text-sm text-color-green-neon font-medium">
+                    {speaker.role}
+                  </p>
+                </div>
               </div>
 
-              {/* Glow effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{
-                boxShadow: 'inset 0 0 30px rgba(134, 215, 47, 0.2)'
-              }} />
+              {/* Brilho interno */}
+              <div 
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none" 
+                style={{
+                  boxShadow: 'inset 0 0 20px rgba(134, 215, 47, 0.25)'
+                }} 
+              />
             </div>
           ))}
         </div>
