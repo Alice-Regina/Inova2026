@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-
+import logoInova from "../images/Logo-Inova.png";
+const footerItems = ['Sobre', 'Temas', 'Palestrantes', 'Minicursos', 'Empresas Parceiras', 'Política de Privacidade'];
 export default function Footer() {
   return (
     <footer className="bg-slate-900-2 border-t border-white/10">
@@ -9,11 +10,11 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <img
-                src="/manus-storage/logo-inova-ifpi_265cb9f4.png"
+                src={logoInova}
                 alt="INOVA IFPI"
-                className="w-8 h-8"
+                className="w-28 h-20"
               />
-              <span className="font-bold text-white">INOVA IFPI</span>
+              {/* <span className="font-bold text-white">INOVA IFPI</span> */}
             </div>
             <p className="text-gray-300 text-sm">
               Transformando o futuro do agronegócio através da inovação e tecnologia.
@@ -59,7 +60,7 @@ export default function Footer() {
                 <MapPin className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm text-gray-300">Localização</p>
-                  <p className="text-white">Teresina, Piauí</p>
+                  <p className="text-white">Instituto Federal do Piauí, Campus Floriano - Piauí</p>
                 </div>
               </div>
             </div>
@@ -69,13 +70,18 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-bold text-white">Links Úteis</h4>
             <ul className="space-y-2">
-              {['Sobre', 'Temas', 'Palestrantes', 'Programação', 'FAQ', 'Política de Privacidade'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-gray-300 hover:text-green-500 transition-colors text-sm">
-                    {link}
-                  </a>
-                </li>
-              ))}
+                {
+                  footerItems.map((item) => (
+                    <a
+                      key={item}
+                      href={`#${item.toLowerCase()}`}
+                      className="hover:transition-colors duration-200 relative group"
+                      style={{ color: 'var(--text-secondary)' }}
+                    ><br />
+                      {item}
+                    </a>
+                  ))
+                }
             </ul>
           </div>
 

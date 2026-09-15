@@ -1,28 +1,35 @@
 import { Plane, Sprout, Truck } from 'lucide-react';
 
 export default function Gallery() {
-  const images = [
+  const inovaEdicoes = [
     {
-      src: '/manus-storage/gallery-drone_b6673aeb.jpg',
-      title: 'Tecnologia Aérea',
-      description: 'Drones e sensores para monitoramento em tempo real',
-      icon: Plane,
-      position: 'left',
+      title: 'Inova IFPI 2022',
+      date: 'Outubro de 2022',
+      description: 'Foco na integração entre soluções tecnológicas e práticas sustentáveis para o desenvolvimento regional.',
+      src: '/caminho/para/imagem1.jpg',
+      position: 'left'
     },
     {
-      src: '/manus-storage/gallery-plantation_4fe25d5e.jpg',
-      title: 'Plantação Inteligente',
-      description: 'IoT e IA transformando o cultivo agrícola',
-      icon: Sprout,
-      position: 'right',
+      title: 'Inova IFPI 2023',
+      date: 'Novembro de 2023',
+      description: 'Foco em empreendedorismo digital, startups e inovação aberta no ecossistema tecnológico piauiense.',
+      src: '/caminho/para/imagem2.jpg',
+      position: 'right'
     },
     {
-      src: '/manus-storage/hero-agtech_0e4a2e12.jpg',
-      title: 'Automação no Campo',
-      description: 'Máquinas autônomas e eficiência operacional',
-      icon: Truck,
-      position: 'left',
+      title: 'Inova IFPI 2024',
+      date: 'Outubro de 2024',
+      description: 'Debates e protótipos voltados para o impacto da inteligência artificial na automação e serviços públicos.',
+      src: '/caminho/para/imagem3.jpg',
+      position: 'left'
     },
+    {
+      title: 'Inova IFPI 2025',
+      date: 'Setembro de 2025',
+      description: 'Apresentação de projetos voltados para urbanismo sustentável, mobilidade urbana e inclusão digital.',
+      src: '/caminho/para/imagem4.jpg',
+      position: 'right'
+    }
   ];
 
   return (
@@ -34,16 +41,17 @@ export default function Gallery() {
       <div className="relative z-10">
         {/* Title Section */}
         <div className="text-center py-16 px-20">
-          <h2 className="text-5xl font-bold text-white mb-4">Galeria de Inovações</h2>
+          <h2 className="text-5xl font-bold text-white mb-4">Galeria de Eventos InovaIFPI</h2>
+          <p className="text-lg mb-4" style={{ color: '#E5E5E5' }}>
+            <b style={{ color: '#F5B700' }}>5 anos</b> de inovações, transformações e contribuições à sociedade
+          </p>
           <p className="text-lg max-w-2xl mx-auto" style={{ color: '#E5E5E5' }}>
-            Conheça as tecnologias que estão revolucionando o agronegócio moderno.
+            Conheça algumas de nossas edições
           </p>
         </div>
 
-        {/* Images alternating full-width */}
-        {images.map((image, idx) => {
-          const Icon = image.icon;
-          const isLeft = image.position === 'left';
+        {inovaEdicoes.map((item, idx) => {
+          const isLeft = item.position === 'left';
 
           return (
             <div
@@ -53,12 +61,12 @@ export default function Gallery() {
               {/* Image - Left or Right */}
               <div className={`w-1/2 h-96 relative ${isLeft ? 'order-1' : 'order-2'}`}>
                 <img
-                  src={image.src}
-                  alt={image.title}
+                  src={item.src}
+                  alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Overlay */}
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{ backgroundImage: 'linear-gradient(to top, rgba(8, 30, 19, 0.6), transparent)' }}
                 />
@@ -66,10 +74,12 @@ export default function Gallery() {
 
               {/* Content - Right or Left */}
               <div className={`w-1/2 px-20 py-12 flex flex-col justify-center ${isLeft ? 'order-2' : 'order-1'}`}>
-                <Icon className="w-12 h-12 mb-4" style={{ color: '#86D72F' }} />
-                <h3 className="text-3xl font-bold text-white mb-3">{image.title}</h3>
+                <span className="text-sm font-semibold tracking-wider uppercase mb-2" style={{ color: '#86D72F' }}>
+                  {item.date}
+                </span>
+                <h3 className="text-3xl font-bold text-white mb-3">{item.title}</h3>
                 <p style={{ color: '#E5E5E5' }} className="text-lg">
-                  {image.description}
+                  {item.description}
                 </p>
               </div>
             </div>

@@ -7,6 +7,7 @@ import Speakers from '@/components/Speakers';
 import Topics from '@/components/Topics';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+import EmpresasParceiras from '@/components/EmpresasParceiras';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Statistics />
       <Gallery />
       <Speakers />
+      <EmpresasParceiras/>
       <Topics />
       <CTA />
       <Footer />

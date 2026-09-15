@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-
+import logoinova from "../images/Logo-Inova.png";
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,7 +14,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Sobre', 'Temas', 'Palestrantes', 'Contato'];
+  const navItems = ['Sobre', 'Temas', 'Palestrantes','Minicursos', 'Empresas Parceiras', 'Contato'];
 
   return (
     <header
@@ -29,11 +29,10 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <img
-            src="/manus-storage/logo-inova-ifpi_265cb9f4.png"
+            src={logoinova}
             alt="INOVA IFPI"
-            className="w-10 h-10"
+            className="w-26 h-18"
           />
-          <span className="text-xl font-bold text-white hidden sm:inline">INOVA IFPI</span>
         </div>
 
         {/* Desktop Navigation */}
@@ -55,7 +54,18 @@ export default function Header() {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <button className="btn-primary">Inscreva-se</button>
+          <button
+              className="px-8 py-3 font-bold rounded-lg transition-all duration-200 ease-out"
+              style={{
+                backgroundColor: '#F5B700',
+                color: '#081E13',
+                transform: 'scale(1)'
+              }}
+              onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.98)')}
+              onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+            >
+              Inscreva-se
+           </button>
         </div>
 
         {/* Mobile Menu Button */}

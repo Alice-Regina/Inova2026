@@ -1,10 +1,11 @@
+import CTABackground from "../images/CTAbackground.png";
 export default function CTA() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="/manus-storage/hero-agtech_0e4a2e12.jpg"
+          src={CTABackground}
           alt="CTA Background"
           className="w-full h-full object-cover"
         />
@@ -20,9 +21,18 @@ export default function CTA() {
         <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">
           Junte-se a líderes e inovadores do agronegócio. Inscreva-se agora e garanta seu lugar.
         </p>
-        <button className="btn-primary text-lg px-10 py-4">
-          Inscrever-se Agora
-        </button>
+        <button
+              className="px-8 py-3 font-bold rounded-lg transition-all duration-200 ease-out"
+              style={{
+                backgroundColor: '#F5B700',
+                color: '#081E13',
+                transform: 'scale(1)'
+              }}
+              onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.98)')}
+              onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+            >
+              Inscreva-se
+           </button>
       </div>
     </section>
   );
