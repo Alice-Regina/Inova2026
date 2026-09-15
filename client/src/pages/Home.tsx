@@ -11,6 +11,7 @@ import Maintenance from "../components/Maintenance";
 // 🔴 Mude para 'false' para exibir o site normalmente
 const IS_MAINTENANCE_MODE = true;
 
+
 function Router() {
   if (IS_MAINTENANCE_MODE) {
     return <Maintenance />;
