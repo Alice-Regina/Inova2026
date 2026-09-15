@@ -1,27 +1,42 @@
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Statistics from '@/components/Statistics';
-import Gallery from '@/components/Gallery';
-import Speakers from '@/components/Speakers';
-import Topics from '@/components/Topics';
-import CTA from '@/components/CTA';
-import Footer from '@/components/Footer';
-import EmpresasParceiras from '@/components/EmpresasParceiras';
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import NotFound from "../pages/NotFound";
+import { Route, Switch } from "wouter";
+import ErrorBoundary from "../components/ErrorBoundary";
+import { ThemeProvider } from "../contexts/ThemeContext";
+import Home from "../pages/Home";
+import Maintenance from "../components/Maintenance";
 
-export default function Home() {
+// 🟢 Mude para 'true' para ativar a manutenção no site
+// 🔴 Mude para 'false' para exibir o site normalmente
+const IS_MAINTENANCE_MODE = true;
+
+function Router() {
+  if (IS_MAINTENANCE_MODE) {
+    return <Maintenance />;
+  }
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#081E13' }}>
-      <Header />
-      <Hero />
-      <About />
-      <Statistics />
-      <Gallery />
-      <Speakers />
-      <EmpresasParceiras/>
-      <Topics />
-      <CTA />
-      <Footer />
-    </div>
+    <Switch>
+      <Route path={"/"} component={Home} />
+      <Route path={"/404"} component={NotFound} />
+      {/* Final fallback route */}
+      <Route component={NotFound} />
+    </Switch>
   );
 }
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <ThemeProvider defaultTheme="dark">
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
+  );
+}
+
+export default App;
