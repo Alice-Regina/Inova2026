@@ -3,7 +3,7 @@ name: Deploy Automático HostGator
 on:
   push:
     branches:
-      - main # Mude para 'master' se a sua branch no GitHub tiver esse nome
+      - main # Mude para 'master' se a sua branch principal tiver esse nome
 
 jobs:
   build-and-deploy:
@@ -16,17 +16,16 @@ jobs:
       - name: Instalar pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8 # Ou a versão do pnpm que você usa localmente
+          version: 8
 
       - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'
 
       - name: Instalar dependências e Gerar Build
         run: |
-          pnpm install --no-frozen-lockfile
+          pnpm install --no-frozen-lockfile --ignore-scripts
           pnpm run build
 
       - name: Enviar arquivos para a HostGator via FTP
