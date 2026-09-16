@@ -18,7 +18,7 @@ export default function Maintenance() {
                 {/* Títulos */}
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
                     Estamos em <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-color-green-neon">
+                    <span className="text-transparent bg-clip-text bg-white from-yellow-500 to-color-green-neon">
                         Manutenção
                     </span>
                 </h1>
