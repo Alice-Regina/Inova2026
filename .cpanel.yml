@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home1/inovai88/public_html
-    - /bin/cp -R dist/* $DEPLOYPATH
+    - /bin/cp -R dist/public/* $DEPLOYPATH
