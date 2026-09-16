@@ -40,35 +40,3 @@ function App() {
 }
 
 export default App;
-// // 
-// {const IS_MAINTENANCE_MODE = false;
-
-// function Router() {
-//   if (IS_MAINTENANCE_MODE) {
-//     return <Maintenance />;
-//   }
-
-//   return (
-//     <Switch>
-//       <Route path={"/"} component={Home} />
-//       <Route path={"/404"} component={NotFound} />
-//       {/* Final fallback route */}
-//       <Route component={NotFound} />
-//     </Switch>
-//   );
-// }
-
-// function App() {
-//   return (
-//     <ErrorBoundary>
-//       <ThemeProvider defaultTheme="dark">
-//         <TooltipProvider>
-//           <Toaster />
-//           <Router />
-//         </TooltipProvider>
-//       </ThemeProvider>
-//     </ErrorBoundary>
-//   );
-// }
-
-// export default App;}
