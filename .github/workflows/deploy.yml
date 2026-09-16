@@ -26,9 +26,10 @@ jobs:
 
       - name: Instalar dependências e Gerar Build
         run: |
-          pnpm install --no-frozen-lockfile --config.ignore-patches=true
+          pnpm config set ignore-patches true
+          pnpm install --no-frozen-lockfile
           pnpm run build
-
+          
       - name: Enviar arquivos para a HostGator via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
