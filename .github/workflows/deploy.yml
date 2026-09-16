@@ -25,7 +25,7 @@ jobs:
 
       - name: Instalar dependências e Gerar Build
         run: |
-          pnpm install --no-frozen-lockfile --ignore-scripts
+          pnpm install --no-frozen-lockfile --config.ignore-patches=true
           pnpm run build
 
       - name: Enviar arquivos para a HostGator via FTP
