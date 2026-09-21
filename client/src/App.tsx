@@ -7,7 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Maintenance from "./components/Maintenance";
 
-const IS_MAINTENANCE_MODE = true;
+const IS_MAINTENANCE_MODE = false;
 
 function Router() {
   if (IS_MAINTENANCE_MODE) {
@@ -20,7 +20,7 @@ function Router() {
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
-  );
+  );0
 }
 
 
