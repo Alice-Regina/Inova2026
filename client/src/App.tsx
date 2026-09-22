@@ -7,7 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Maintenance from "./components/Maintenance";
 
-const IS_MAINTENANCE_MODE = false;
+const IS_MAINTENANCE_MODE = true;
 
 function Router() {
   if (IS_MAINTENANCE_MODE) {
