@@ -1,6 +1,6 @@
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import logoInova from "../images/Logo-Inova.png";
-const footerItems = ['Sobre', 'Temas', 'Palestrantes', 'Minicursos', 'Empresas Parceiras', 'Política de Privacidade'];
+const footerItems = ['Sobre', 'Temas', 'Palestrantes', 'Minicursos','Programacao', 'Empresas Parceiras', 'Contato'];
 export default function Footer() {
   return (
     <footer className="bg-slate-900-2 border-t border-white/10">
@@ -81,7 +81,7 @@ export default function Footer() {
                       {item}
                     </a>
                   ))
-                }
+                } 
             </ul>
           </div>
 
