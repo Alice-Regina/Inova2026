@@ -10,6 +10,30 @@ export default function About() {
     { icon: Calendar, label: 'Imersão em 3 Turnos', value: '20 a 22 Out' },
   ];
 
+const topics = [
+  {
+    icon: CalendarDays,
+    title: 'Cinco anos de história',
+    text: 'Evento realizado pelo Instituto Federal do Piauí (IFPI), no Campus Floriano, que reúne estudantes, servidores e comunidade.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Tema desta edição',
+    text: '“Inovação e tecnologia movendo o agronegócio”.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Agronegócio e renda no Piauí',
+    text: 'Uma das áreas que mais influenciam diretamente a geração de renda do estado e que mostra, a cada safra, a sua importância.',
+  },
+  {
+    icon: Cpu,
+    title: 'Tecnologia em todos os setores',
+    text: 'Veja como a tecnologia está transformando os diversos setores do agronegócio, do campo à gestão.',
+  },
+];
+
+export default function About() {
   return (
     <section id="sobre" className="w-full py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#081E13' }}>
       {/* Elementos visuais de background */}
@@ -89,6 +113,23 @@ export default function About() {
 
         </div>
       </div>
+
+      <style>{`
+        .about-photo {
+          transition: transform .45s cubic-bezier(.2,.7,.2,1), z-index 0s .2s;
+        }
+        .about-photo:hover {
+          transform: scale(1.06);
+          z-index: 50 !important;
+          transition: transform .45s cubic-bezier(.2,.7,.2,1), z-index 0s;
+        }
+        @keyframes aboutFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        .about-float { animation: aboutFloat 7s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) { .about-float { animation: none; } }
+      `}</style>
     </section>
   );
 }
