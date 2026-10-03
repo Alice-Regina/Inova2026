@@ -41,8 +41,9 @@ export default function Gallery() {
       <div className="relative z-10">
         {/* Title Section */}
         <div className="text-center py-16 px-20">
-          <h2 className="text-5xl font-bold text-white mb-4">Galeria de Eventos InovaIFPI</h2>
-          <p className="text-lg mb-4" style={{ color: '#E5E5E5' }}>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500">GALERIA DE EVENTOS DO INOVA IFPI 2026</span>
+          </h2><p className="text-lg mb-4" style={{ color: '#E5E5E5' }}>
             <b style={{ color: '#F5B700' }}>5 anos</b> de inovações, transformações e contribuições à sociedade
           </p>
           <p className="text-lg max-w-2xl mx-auto" style={{ color: '#E5E5E5' }}>

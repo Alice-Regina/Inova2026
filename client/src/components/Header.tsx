@@ -14,7 +14,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Sobre', 'Temas', 'Palestrantes', 'Minicursos', 'Empresas Parceiras', 'Contato'];
+  const navItems = ['Sobre', 'Temas', 'Palestrantes', 'Minicursos','Programacao', 'Empresas Parceiras', 'Contato'];
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled

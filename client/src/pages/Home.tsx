@@ -8,6 +8,8 @@ import Topics from '@/components/Topics';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import EmpresasParceiras from '@/components/EmpresasParceiras';
+import ProgramacaoEvento from '@/components/ProgramacaoEvento';
+import Minicursos from '@/components/Minicursos';
 
 export default function Home() {
   return (
@@ -18,6 +20,8 @@ export default function Home() {
       <Statistics />
       <Gallery />
       <Speakers />
+      <Minicursos/>
+      <ProgramacaoEvento/>
       <EmpresasParceiras/>
       <Topics />
       <CTA />
