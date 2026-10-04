@@ -1,4 +1,3 @@
-import React from 'react';
 import Diamante1 from "../images/cotaDiamante/Virtex.png";
 
 export default function EmpresasParceiras() {
@@ -54,27 +53,23 @@ export default function EmpresasParceiras() {
     ];
 
     return (
-        <section id="empresas parceiras" className="section-padding bg-gradient-to-b from-slate-900 to-slate-900/95 relative overflow-hidden py-20">
+        <section id="empresas parceiras" aria-labelledby="parceiras-title" className="relative scroll-mt-20 overflow-hidden py-16 md:py-20" style={{ backgroundColor: '#081E13' }}>
             {/* Elementos de background */}
-            <div className="absolute top-0 right-1/4 w-96 h-96 bg-color-green-neon/5 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#86D72F]/5 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl" />
 
             <div className="container relative z-10 mx-auto px-4">
 
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Empresas Parceiras</h2>
+                <div className="text-center mb-8 md:mb-10">
+                    <h2 id="parceiras-title" className="text-4xl md:text-5xl font-bold text-white mb-4">Empresas <span className="text-[#86D72F]">Parceiras</span></h2>
                     <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                         Instituições e marcas que acreditam e impulsionam a inovação.
                     </p>
                 </div>
 
-                <div className="space-y-20">
+                <div className="space-y-8 md:space-y-10">
                     {planos.map((plano, planIdx) => (
                         <div key={planIdx} className="flex flex-col items-center">
-
-                            <h3 className="text-2xl font-bold text-white mb-8 border-b-2 border-color-green-neon pb-2 inline-block">
-                                {plano.titulo}
-                            </h3>
 
                             {/* O max-w e mx-auto centralizam e limitam a largura dependendo da cota */}
                             <div className={`grid gap-4 md:gap-6 w-full mx-auto ${plano.gridClass}`}>
@@ -84,18 +79,18 @@ export default function EmpresasParceiras() {
                                         href={empresa.link} // Link que configuramos no array
                                         target="_blank" // Abre em uma nova aba
                                         rel="noopener noreferrer" // Recomendação de segurança para links externos
-                                        className={`block group relative rounded-xl overflow-hidden ${plano.cardHeight} p-[2px] cursor-pointer`}
+                                        className={`block group relative rounded-xl overflow-hidden ${plano.cardHeight} p-[2px] cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#86D72F]`}
                                         title={`Visitar ${empresa.name}`}
                                     >
                                         {/* 1. O fundo de energia giratório */}
-                                        <div className="absolute inset-0 bg-gradient-to-r from-color-green-neon via-slate-900 to-color-green-neon animate-[spin_3s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-[#86D72F] via-[#081E13] to-[#86D72F] animate-[spin_3s_linear_infinite] motion-reduce:animate-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                         
-                                        {/* 2. O card escuro com a logo (bg-slate-900 combinando com o site) */}
-                                        <div className="relative flex items-center justify-center bg-slate-900 h-full w-full rounded-[10px] p-4 md:p-6 z-10">
+                                        {/* 2. O card escuro com a logo (bg-[#081E13] combinando com o site) */}
+                                        <div className="relative flex items-center justify-center bg-[#081E13] h-full w-full rounded-[10px] p-4 md:p-6 z-10">
                                             <img
                                                 src={empresa.image}
                                                 alt={`Logo ${empresa.name}`}
-                                                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                                                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                                             />
                                         </div>
 

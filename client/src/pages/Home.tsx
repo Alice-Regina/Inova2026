@@ -2,7 +2,6 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Statistics from '@/components/Statistics';
-import Gallery from '@/components/Gallery';
 import Speakers from '@/components/Speakers';
 import Topics from '@/components/Topics';
 import CTA from '@/components/CTA';
@@ -18,7 +17,6 @@ export default function Home() {
       <Hero />
       <About />
       <Statistics />
-      <Gallery />
       <Speakers />
       <Minicursos/>
       <ProgramacaoEvento/>

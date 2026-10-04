@@ -9,31 +9,6 @@ export default function About() {
     { icon: GraduationCap, label: 'Alunos na Organização', value: '60+' },
     { icon: Calendar, label: 'Imersão em 3 Turnos', value: '20 a 22 Out' },
   ];
-
-const topics = [
-  {
-    icon: CalendarDays,
-    title: 'Cinco anos de história',
-    text: 'Evento realizado pelo Instituto Federal do Piauí (IFPI), no Campus Floriano, que reúne estudantes, servidores e comunidade.',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Tema desta edição',
-    text: '“Inovação e tecnologia movendo o agronegócio”.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Agronegócio e renda no Piauí',
-    text: 'Uma das áreas que mais influenciam diretamente a geração de renda do estado e que mostra, a cada safra, a sua importância.',
-  },
-  {
-    icon: Cpu,
-    title: 'Tecnologia em todos os setores',
-    text: 'Veja como a tecnologia está transformando os diversos setores do agronegócio, do campo à gestão.',
-  },
-];
-
-export default function About() {
   return (
     <section id="sobre" className="w-full py-24 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#081E13' }}>
       {/* Elementos visuais de background */}
