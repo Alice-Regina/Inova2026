@@ -2,8 +2,8 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Statistics from '@/components/Statistics';
+import Schedule from '@/components/Schedule';
 import Speakers from '@/components/Speakers';
-import Topics from '@/components/Topics';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import EmpresasParceiras from '@/components/EmpresasParceiras';
@@ -15,9 +15,9 @@ export default function Home() {
       <Hero />
       <About />
       <Statistics />
+      <Schedule />
       <Speakers />
-      <EmpresasParceiras/>
-      <Topics />
+      <EmpresasParceiras />
       <CTA />
       <Footer />
     </div>
