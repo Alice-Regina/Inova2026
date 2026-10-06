@@ -284,7 +284,7 @@ export default function Schedule() {
   const current = DAYS.find((d) => d.day === active);
 
   return (
-    <section aria-labelledby="cronograma-title" className="bg-[#08200f] py-12 md:py-16">
+    <section id="cronograma" aria-labelledby="cronograma-title" className="scroll-mt-24 bg-[#08200f] py-12 md:py-16">
       <div className="mx-auto w-full max-w-5xl px-6 md:px-10">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>

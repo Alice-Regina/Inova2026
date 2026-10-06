@@ -1,6 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import logoinova from "../images/Logo-Inova.png";
+
+const navItems = [
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Cronograma', href: '#cronograma' },
+  { label: 'Palestrantes', href: '#palestrantes' },
+  { label: 'Minicursos', href: '#minicursos' },
+  { label: 'Empresas Parceiras', href: '#empresas-parceiras' },
+  { label: 'Contato', href: '#contato' },
+];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -10,11 +20,11 @@ export default function Header() {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Sobre', 'Temas', 'Palestrantes', 'Minicursos', 'Empresas Parceiras', 'Contato'];
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
@@ -34,17 +44,17 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navItems.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.href}
+              href={item.href}
               className="hover:transition-colors duration-200 relative group text-sm xl:text-base font-medium whitespace-nowrap"
               style={{ color: 'var(--text-secondary)' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--green-neon)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
             >
-              {item}
+              {item.label}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" style={{ backgroundColor: 'var(--green-neon)' }} />
             </a>
           ))}
@@ -65,6 +75,10 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
+          type="button"
+          aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls={isMobileMenuOpen ? 'menu-mobile' : undefined}
           className="lg:hidden text-white p-2 focus:outline-none"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -74,16 +88,16 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-slate-900/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
+        <nav id="menu-mobile" aria-label="Navegação para celular" className="lg:hidden bg-slate-900/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
           <div className="container mx-auto px-4 py-6 space-y-4 flex flex-col">
             {navItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.href}
+                href={item.href}
                 className="text-gray-200 hover:text-green-400 font-medium text-lg transition-colors py-1"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {item}
+                {item.label}
               </a>
             ))}
 
@@ -100,7 +114,7 @@ export default function Header() {
               </button>
             </div>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

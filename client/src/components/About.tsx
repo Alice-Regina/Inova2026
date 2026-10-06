@@ -51,7 +51,7 @@ const topics = [
 
 export default function About() {
   return (
-    <section id="sobre" className="w-full py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: '#081E13' }}>
+    <section id="sobre" className="w-full scroll-mt-24 py-24 lg:py-32 relative overflow-hidden" style={{ backgroundColor: '#081E13' }}>
       <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(134, 215, 47, 0.04)' }} />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(245, 183, 0, 0.04)' }} />
 
