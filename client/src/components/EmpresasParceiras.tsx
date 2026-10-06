@@ -9,6 +9,7 @@ import bob from '../images/patrocinio/BOB.png';
 import geleia from '../images/patrocinio/Geleia.png';
 import magno from '../images/patrocinio/MAGNO.png';
 import danilo from '../images/patrocinio/Danilo.png';
+import james from '../images/patrocinio/Logomarca James Rodrigues contorno branco.png';
 
 const empresas = [
   { name: 'Virtex Telecom', image: Virtex, link: 'https://virtex.com.br/floriano' },
@@ -21,6 +22,7 @@ const empresas = [
   { name: 'BOB Espeto', image: bob, link: '#' },
   { name: 'Geleia Gourmet', image: geleia, link: '#' },
   { name: 'Magno', image: magno, link: '#' },
+  { name: 'James', image: james, link: '#' },
   { name: 'Danilo Martins Galalau', image: danilo, link: '#', compactImage: true },
 ];
 
