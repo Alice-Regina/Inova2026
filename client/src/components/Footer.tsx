@@ -6,7 +6,7 @@ const footerItems = [
   { label: 'Sobre', href: '#sobre' },
   { label: 'Cronograma', href: '#cronograma' },
   { label: 'Palestrantes', href: '#palestrantes' },
-  { label: 'Empresas Parceiras', href: '#empresas parceiras' },
+  { label: 'Empresas Parceiras', href: '#empresas-parceiras' },
 ];
 
 export default function Footer() {
@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
 
           {/* Column 2 - Contact */}
-          <div className="space-y-4">
+          <div id="contato" className="scroll-mt-24 space-y-4">
             <h4 className="font-bold text-white">Contato</h4>
             <div className="space-y-3">
               <div className="flex items-start gap-3">

@@ -9,6 +9,7 @@ import bob from '../images/patrocinio/BOB.png';
 import geleia from '../images/patrocinio/Geleia.png';
 import magno from '../images/patrocinio/MAGNO.png';
 import danilo from '../images/patrocinio/Danilo.png';
+import james from '../images/patrocinio/Logomarca James Rodrigues contorno branco.png';
 
 const empresas = [
   { name: 'Virtex Telecom', image: Virtex, link: 'https://virtex.com.br/floriano' },
@@ -21,6 +22,7 @@ const empresas = [
   { name: 'BOB Espeto', image: bob, link: '#' },
   { name: 'Geleia Gourmet', image: geleia, link: '#' },
   { name: 'Magno', image: magno, link: '#' },
+  { name: 'James', image: james, link: '#' },
   { name: 'Danilo Martins Galalau', image: danilo, link: '#', compactImage: true },
 ];
 
@@ -28,7 +30,7 @@ export default function EmpresasParceiras() {
   const partnerClassName = 'group flex h-full w-full items-center justify-center rounded-lg p-2 transition-transform duration-300 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#86D72F] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:focus-visible:translate-y-0';
 
   return (
-    <section id="empresas parceiras" aria-labelledby="parceiras-title" className="relative scroll-mt-20 overflow-hidden border-y border-white/5 py-14 md:py-20" style={{ backgroundColor: '#081E13' }}>
+    <section id="empresas-parceiras" aria-labelledby="parceiras-title" className="relative scroll-mt-24 overflow-hidden border-y border-white/5 py-14 md:py-20" style={{ backgroundColor: '#081E13' }}>
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"

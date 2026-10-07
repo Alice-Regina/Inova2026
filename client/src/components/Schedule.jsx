@@ -3,59 +3,246 @@ import { useState } from 'react';
 // Fotos fictícias (picsum.photos). Troque `photo` pela foto real de cada pessoa.
 const photo = (seed) => `https://picsum.photos/seed/${seed}/200/200`;
 
-const person = (seed, role) => ({
-  name: 'Nome do palestrante',
-  institution: 'Instituição',
+const person = (seed, {
   role,
-  photo: photo(seed),
+  name = 'Nome do palestrante',
+  institution = 'Instituição',
+  image = photo(seed),
+} = {}) => ({
+  name,
+  institution,
+  role,
+  photo: image,
 });
 
-const lecture = (seed, theme = 'Tema da palestra') => ({
+const lecture = (seed, {
+  theme = 'Tema da palestra',
+  location = 'Local',
+  speaker = {},
+} = {}) => ({
   type: 'Palestra',
   theme,
-  location: 'Local',
-  people: [person(seed)],
+  location,
+  people: [person(seed, speaker)],
 });
 
-const course = (seed) => ({
+const course = (seed, {
+  theme = 'Tema do minicurso',
+  location = 'Local',
+  speaker = {},
+} = {}) => ({
   type: 'Minicurso',
-  theme: 'Tema do minicurso',
-  location: 'Local',
-  people: [person(seed)],
+  theme,
+  location,
+  people: [person(seed, speaker)],
 });
 
+// Edite cada atividade separadamente. Para trocar uma foto, substitua photo('...')
+// pela URL ou pelo caminho da imagem desejada.
 const DAYS = [
   {
     day: 20,
     slots: [
-      { time: '08h – 10h', items: [lecture('d20-a')] },
       {
-        time: 'Horário a definir',
+        time: '08h – 10h',
+        items: [lecture('d20-a', {
+          theme: 'Força Feminina no Agro',
+          location: 'Auditório',
+          speaker: {
+            name: 'Isabella',
+            institution: 'Fazenda Formosa',
+            image: photo('d20-a'),
+          },
+        })],
+      },
+      {
+        time: '10h30 - 12h',
+        items: [lecture('d20-b', {
+          theme: 'Empreender na Prática: Ideias que Transformam',
+          location: 'Auditório',
+          speaker: {
+            name: 'SEBRAE',
+            institution: 'SEBRAE',
+            image: photo('d20-b'),
+          },
+        })],
+      },
+      {
+        time: '19h - 21h30',
         items: [
           {
             type: 'Talk show',
-            theme: 'Tema do talk show',
+            theme: 'Do campo ao futuro: como a tecnologia e a inovação estão transformando o agronegócio',
             location: 'Local',
             people: [
-              person('d20-t1', 'Mediador'),
-              person('d20-t2', 'Participante'),
-              person('d20-t3', 'Participante'),
+              person('d20-t1', {
+                role: 'Mediador',
+                name: 'Prof Dr. Robson Freitas',
+                institution: 'Instituto Federal do Piauí',
+                image: photo('d20-t1'),
+              }),
+              person('d20-t2', {
+                role: 'Participante',
+                name: 'Professora Mirian',
+                institution: 'CTF',
+                image: photo('d20-t2'),
+              }),
+              person('d20-t3', {
+                role: 'Participante',
+                name: 'Professora Laiara',
+                institution: 'Instituto Federal do Piauí',
+                image: photo('d20-t3'),
+              }),
             ],
           },
         ],
       },
-      { time: '19h – 21h30', items: [lecture('d20-b')] },
+      
     ],
   },
-  ...[21, 22].map((day) => ({
-    day,
+  {
+    day: 21,
     slots: [
-      { time: '10h – 12h30', items: [lecture(`d${day}-a`)] },
-      { time: '14h – 18h', items: [course(`d${day}-c1`), course(`d${day}-c2`)] },
-      { time: '19h – 20h', items: [lecture(`d${day}-b`)] },
-      { time: '20h – 21h', items: [lecture(`d${day}-c`)] },
+      {
+        time: '10h – 12h30',
+        items: [lecture('d21-a', {
+          theme: 'Do Apiário à Inovação: Como a Tecnologia Está Transformando a Apicultura e Movendo o Agronegócio',
+          location: 'Auditório',
+          speaker: {
+            name: 'Thais Trajano',
+            institution: 'Célula de Inovação de Floriano',
+            image: photo('d21-a'),
+          },
+        })],
+      },
+      {
+        time: '14h – 15h30',
+        items: [
+          {
+            type: 'Oficina',
+            theme: 'Da ideia ao modelo de negócio: empreendendo na prática',
+            location: 'Auditório',
+            people: [person('d21-o1', {
+              name: 'Nome do palestrante',
+              institution: 'SEBRAE',
+              image: photo('d21-o1'),
+            })],
+          },
+        ],
+      },
+      {
+        time: '14h – 18h',
+        items: [
+          course('d21-c1', {
+            theme: 'Uso de Drones como ferramenta de inspeção',
+            location: 'Local',
+            speaker: {
+              name: 'Prof. Tarso',
+              institution: 'Drone Floriano Tecnologia no Campo',
+              image: photo('d21-c1'),
+            },
+          }),
+          course('d21-c2', {
+            theme: 'Tema do minicurso',
+            location: 'Laboratório 3',
+            speaker: {
+              name: 'Prof. Me. Ronaldo Pires Borges',
+              institution: 'IFPI - FLORIANO',
+              image: photo('d21-c2'),
+            },
+          }),
+        ],
+      },
+      {
+        time: '19h – 20h',
+        items: [lecture('d21-b', {
+          theme: 'O Bem Estar Animal e seu Impacto nos Sistemas de Produção de Gado de Corte',
+          location: 'Auditório',
+          speaker: {
+            name: 'Ricardo Aboud',
+            institution: 'Fazenda África',
+            image: photo('d21-b'),
+          },
+        })],
+      },
+      {
+        time: '20h – 21h',
+        items: [lecture('d21-c', {
+          theme: 'A contribuição da disponibilidade tecnológica na produção e beneficiamento de sementes para o aumento da produtividade.',
+          location: 'Auditório',
+          speaker: {
+            name: 'Yana Rocha dos Reis Carvalho',
+            institution: 'Fazenda Aliança',
+            image: photo('d21-c'),
+          },
+        })],
+      },
     ],
-  })),
+  },
+  {
+    day: 22,
+    slots: [
+      {
+        time: '10h – 12h30',
+        items: [lecture('d22-a', {
+          theme: 'Conectividade Estratégica: Liderando a Inovação e Escalando Resultados em Ecossistemas',
+          location: 'Auditório',
+          speaker: {
+            name: 'Luanny Emmanuelly',
+            institution: 'Virtex',
+            image: photo('d22-a'),
+          },
+        })],
+      },
+      {
+        time: '14h – 18h',
+        items: [
+          course('d22-c1', {
+            theme: ' Aplicação do software R na análise de dados agrometeorológicos.',
+            location: 'Local',
+            speaker: {
+              name: 'Prof. Dr. Lizandro',
+              institution: 'IFPI - Floriano',
+              image: photo('d22-c1'),
+            },
+          }),
+          course('d22-c2', {
+            theme: 'Desenvolvimento de Site do Zero ao Profissional com IA',
+            location: 'Laboratório J18',
+            speaker: {
+              name: 'Weslley Silva de Sousa Ferreira',
+              institution: 'Instituição',
+              image: photo('d22-c2'),
+            },
+          }),
+        ],
+      },
+      {
+        time: '19h – 20h',
+        items: [lecture('d22-b', {
+          theme: 'Tema da palestra',
+          location: 'Auditório',
+          speaker: {
+            name: 'Nome do palestrante',
+            institution: 'Fazenda Progresso',
+            image: photo('d22-b'),
+          },
+        })],
+      },
+      {
+        time: '20h – 21h',
+        items: [lecture('d22-c', {
+          theme: 'Tema da palestra',
+          location: 'Auditório',
+          speaker: {
+            name: 'Nome do palestrante',
+            institution: 'Fullzi Tecnologia',
+            image: photo('d22-c'),
+          },
+        })],
+      },
+    ],
+  },
 ];
 
 function Card({ item }) {
@@ -97,7 +284,7 @@ export default function Schedule() {
   const current = DAYS.find((d) => d.day === active);
 
   return (
-    <section aria-labelledby="cronograma-title" className="bg-[#08200f] py-12 md:py-16">
+    <section id="cronograma" aria-labelledby="cronograma-title" className="scroll-mt-24 bg-[#08200f] py-12 md:py-16">
       <div className="mx-auto w-full max-w-5xl px-6 md:px-10">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>

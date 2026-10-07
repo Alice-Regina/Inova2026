@@ -127,9 +127,9 @@ function PersonCard({ p }: { p: Person }) {
   );
 }
 
-function Group({ title, people }: { title: string; people: Person[] }) {
+function Group({ id, title, people }: { id?: string; title: string; people: Person[] }) {
   return (
-    <div>
+    <div id={id} className="scroll-mt-24">
       <h3 className="mb-5 border-b border-white/10 pb-3 text-xl font-semibold text-white md:text-2xl">
         {title}
       </h3>
@@ -144,7 +144,7 @@ function Group({ title, people }: { title: string; people: Person[] }) {
 
 export default function Speakers() {
   return (
-    <section id="palestrantes" className="relative overflow-hidden bg-[#081E13] py-14 md:py-20">
+    <section id="palestrantes" className="relative scroll-mt-24 overflow-hidden bg-[#081E13] py-14 md:py-20">
       <div className="pointer-events-none absolute right-1/4 top-0 h-96 w-96 rounded-full bg-color-green-neon/10 blur-3xl" />
 
       <div className="container relative z-10 mx-auto max-w-6xl px-4">
@@ -157,7 +157,7 @@ export default function Speakers() {
 
         <div className="space-y-12">
           <Group title="Palestras" people={speakers} />
-          <Group title="Minicursos" people={instructors} />
+          <Group id="minicursos" title="Minicursos" people={instructors} />
         </div>
       </div>
     </section>
