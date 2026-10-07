@@ -1,100 +1,84 @@
-import React from 'react';
-import { Users, Lightbulb, MapPin, Award } from 'lucide-react';
-import fazendeiroOlhando from "../images/FazendeiroOlhandoGado.png";
-import PilotandoDrone from "../images/PilotandoDrone.png";
-import ColhendoSoja from "../images/ColhendoSoja.png";
+/// <reference types="vite/client" />
+
+const YEARS = [2022, 2023, 2024, 2025];
+
+// Procura as fotos "Inova2022(1)", "Inova2023(3)" etc. em qualquer subpasta de src/images,
+// com qualquer extensão. O ano vem do nome do arquivo e a ordem, do número entre parênteses.
+const modules = import.meta.glob('../images/**/*[Ii]nova*', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+const found: Record<number, { src: string; order: number }[]> = Object.fromEntries(
+  YEARS.map((y) => [y, []])
+);
+
+Object.entries(modules).forEach(([path, src]) => {
+  const file = path.split('/').pop() ?? '';
+  const year = Number(file.match(/20\d{2}/)?.[0]);
+  const order = Number(file.match(/\((\d+)\)\.\w+$/)?.[1] ?? 0);
+  if (found[year]) found[year].push({ src, order });
+});
+
+const PHOTOS: Record<number, string[]> = Object.fromEntries(
+  YEARS.map((y) => [y, found[y].sort((a, b) => a.order - b.order).map((p) => p.src)])
+);
 
 export default function Statistics() {
-  const stats = [
-    { icon: Users, number: '250+', label: 'Participantes' },
-    { icon: Lightbulb, number: '20+', label: 'Palestras e Workshops' },
-    { icon: MapPin, number: '3', label: 'Áreas de Exposição' },
-    { icon: Award, number: '10+', label: 'Empresas Parceiras' },
-  ];
-
   return (
-    <section className="section-padding bg-slate-50 relative overflow-hidden py-24">
-      {/* Glow de fundo ajustado para o modo claro */}
-      <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-
-          {/* LADO ESQUERDO: Textos e Estatísticas */}
-          <div className="w-full lg:w-1/2">
-            <span className="text-sm font-semibold tracking-wider text-green-700 uppercase mb-2 block">
-              Sobre o Evento
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-              Conectar Ideias, <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-green-600">
-                Tecnologia e Pessoas
-              </span> <br />
-              para o amanhã.
-            </h2>
-            <p className="text-lg text-slate-600 mb-12 max-w-xl">
-              Um evento de escala internacional com impacto transformador no agronegócio e na tecnologia.
-              Reunimos os principais especialistas e startups para promover conexões que geram resultados reais.
+    <section
+      aria-labelledby="conexoes-title"
+      className="bg-[#081E13] py-12 md:py-16"
+    >
+      <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
+        <div className="grid items-end gap-4 md:grid-cols-2 md:gap-10">
+          <h2
+            id="conexoes-title"
+            className="scroll-mt-28 text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl"
+          >
+            Conectar Ideias,{' '}
+            <span className="text-yellow-400">Tecnologia e Pessoas</span> para o amanhã.
+          </h2>
+          <div>
+            <p className="text-sm leading-relaxed text-green-50/70 md:text-base">
+              Mais de 150 participantes em palestras e minicursos que conectam pessoas e
+              ideias para o agronegócio e a tecnologia.
             </p>
-
-            {/* Grid dos Números */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center sm:text-left border-t border-slate-200 pt-8">
-              {stats.map((stat, idx) => {
-                const Icon = stat.icon;
-                return (
-                  <div key={idx} className="group">
-                    <div className="mb-3 flex justify-center sm:justify-start">
-                      <Icon className="w-8 h-8 text-green-600 group-hover:scale-110 transition-transform duration-300" />
-                    </div>
-                    <p className="text-3xl font-bold text-slate-900 mb-1 group-hover:text-green-600 transition-colors duration-300">
-                      {stat.number}
-                    </p>
-                    <p className="text-xs text-slate-500 uppercase tracking-wide font-medium">
-                      {stat.label}
-                    </p>
-                  </div>
-                );
-              })}
+            <div className="mt-4 flex gap-8">
+              <p className="text-white">
+                <span className="text-2xl font-bold text-yellow-400">4</span>{' '}
+                <span className="text-sm text-green-50/70">edições</span>
+              </p>
+              <p className="text-white">
+                <span className="text-2xl font-bold text-yellow-400">150+</span>{' '}
+                <span className="text-sm text-green-50/70">participantes</span>
+              </p>
             </div>
           </div>
+        </div>
 
-          {/* LADO DIREITO: Imagens Inclinadas (Skew) */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <div className="grid grid-cols-3 gap-2 h-[400px] md:h-[500px] w-full max-w-xl transform -skew-x-12 px-2">
-
-              {/* Imagem 1 */}
-              <div className="w-full h-full overflow-hidden rounded-2xl relative group shadow-md">
-                <img
-                  src={fazendeiroOlhando}
-                  alt="Agricultor com Tecnologia no Campo"
-                  className="w-full h-full object-cover transform skew-x-12 scale-[1.45] group-hover:scale-[1.55] transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-colors duration-500" />
+        <div className="mt-10 divide-y divide-white/10 border-y border-white/10">
+          {YEARS.map((year) => (
+            <div
+              key={year}
+              className="grid items-center gap-3 py-4 md:grid-cols-[4rem_1fr] md:gap-6"
+            >
+              <h3 className="text-lg font-semibold text-yellow-400">{year}</h3>
+              <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
+                {PHOTOS[year].map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Foto ${i + 1} da edição ${year}`}
+                    loading="lazy"
+                    className={`aspect-[4/3] w-full rounded-lg object-cover ${
+                      i > 2 ? 'hidden sm:block' : ''
+                    }`}
+                  />
+                ))}
               </div>
-
-              {/* Imagem 2 */}
-              <div className="w-full h-full overflow-hidden rounded-2xl relative group shadow-md">
-                <img
-                  src={PilotandoDrone}
-                  alt="Sustentabilidade"
-                  className="w-full h-full object-cover transform skew-x-12 scale-[1.45] group-hover:scale-[1.55] transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-green-600/10 mix-blend-overlay group-hover:bg-transparent transition-colors duration-500" />
-              </div>
-
-              {/* Imagem 3 */}
-              <div className="w-full h-full overflow-hidden rounded-2xl relative group shadow-md">
-                <img
-                  src={ColhendoSoja}
-                  alt="Inovação e Robótica"
-                  className="w-full h-full object-cover transform skew-x-12 scale-[1.45] group-hover:scale-[1.55] transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-colors duration-500" />
-              </div>
-
             </div>
-          </div>
-
+          ))}
         </div>
       </div>
     </section>

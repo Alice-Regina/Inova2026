@@ -1,9 +1,17 @@
+
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import logoInova from "../images/Logo-Inova.png";
-const footerItems = ['Sobre', 'Temas', 'Palestrantes', 'Minicursos', 'Empresas Parceiras', 'Política de Privacidade'];
+
+const footerItems = [
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Cronograma', href: '#cronograma' },
+  { label: 'Palestrantes', href: '#palestrantes' },
+  { label: 'Empresas Parceiras', href: '#empresas parceiras' },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-slate-900-2 border-t border-white/10">
+    <footer className="bg-[#081E13] border-t border-white/10">
       <div className="container py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Column 1 - Logo and Newsletter */}
@@ -14,7 +22,6 @@ export default function Footer() {
                 alt="INOVA IFPI"
                 className="w-28 h-20"
               />
-              {/* <span className="font-bold text-white">INOVA IFPI</span> */}
             </div>
             <p className="text-gray-300 text-sm">
               Transformando o futuro do agronegócio através da inovação e tecnologia.
@@ -25,7 +32,7 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="Seu email"
-                  className="flex-1 bg-slate-900 px-3 py-2 rounded-lg text-sm text-white placeholder-color-text-tertiary border border-white/10 focus:border-green-500 outline-none transition-colors"
+                  className="flex-1 bg-white/5 px-3 py-2 rounded-lg text-sm text-white placeholder-color-text-tertiary border border-white/10 focus:border-green-500 outline-none transition-colors"
                 />
                 <button className="bg-yellow-500 hover:bg-yellow-500-hover text-white px-4 py-2 rounded-lg font-semibold transition-colors">
                   →
@@ -70,18 +77,16 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-bold text-white">Links Úteis</h4>
             <ul className="space-y-2">
-                {
-                  footerItems.map((item) => (
-                    <a
-                      key={item}
-                      href={`#${item.toLowerCase()}`}
-                      className="hover:transition-colors duration-200 relative group"
-                      style={{ color: 'var(--text-secondary)' }}
-                    ><br />
-                      {item}
-                    </a>
-                  ))
-                }
+              {footerItems.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="text-gray-300 hover:text-green-500 transition-colors duration-200"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -100,7 +105,7 @@ export default function Footer() {
                   <a
                     key={social.label}
                     href="#"
-                    className="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center text-green-500 hover:bg-color-green-neon hover:text-white transition-colors"
+                    className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-green-500 hover:bg-color-green-neon hover:text-white transition-colors"
                     title={social.label}
                   >
                     <Icon size={18} />

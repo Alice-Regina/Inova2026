@@ -1,179 +1,117 @@
 import { useState, useEffect } from 'react';
-import { Play } from 'lucide-react';
-import heroAgricultor from "../images/hero-agricultor.png";
+import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import heroAgricultor from '../images/hero-agricultor.png';
 
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+// 20 de outubro de 2026, 08:00 (horário local)
+const EVENT_DATE = new Date(2026, 9, 20, 8, 0, 0).getTime();
+
+const GREEN = '#86D72F';
+const GOLD = '#F5B700';
+
+function getTimeLeft() {
+  const diff = Math.max(0, EVENT_DATE - Date.now());
+  return {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor((diff / 3600000) % 24),
+    minutes: Math.floor((diff / 60000) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
 }
 
 export default function Hero() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-  days: 35,
-  hours: 3,
-  minutes: 12,
-  seconds: 0,
-});
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        let { days, hours, minutes, seconds } = prev;
-        seconds--;
-
-        if (seconds < 0) {
-          seconds = 59;
-          minutes--;
-        }
-        if (minutes < 0) {
-          minutes = 59;
-          hours--;
-        }
-        if (hours < 0) {
-          hours = 23;
-          days--;
-        }
-        if (days < 0) {
-          days = 0;
-          hours = 0;
-          minutes = 0;
-          seconds = 0;
-        }
-
-        return { days, hours, minutes, seconds };
-      });
-    }, 1000);
-
+    const timer = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
     return () => clearInterval(timer);
   }, []);
 
+  const countdown = [
+    { label: 'Dias', value: timeLeft.days },
+    { label: 'Horas', value: timeLeft.hours },
+    { label: 'Min', value: timeLeft.minutes },
+    { label: 'Seg', value: timeLeft.seconds },
+  ];
+
   return (
-    <section className="relative w-full min-h-screen pt-20 overflow-hidden flex items-center">
-      {/* Background Image com Blur e Overlay */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
-        style={{ backgroundImage: `url(${heroAgricultor})` }}
-      >
-        {/* Overlay escuro com tom da marca e efeito fosco */}
-        <div 
-          className="absolute inset-0 w-full h-full backdrop-blur-[3px]" 
-          style={{ backgroundColor: 'rgba(8, 30, 19, 0.85)' }} 
-        />
-      </div>
+    <section className="w-full min-h-screen pt-20 flex items-center" style={{ backgroundColor: '#081E13' }}>
+      <div className="w-full max-w-7xl mx-auto px-6 lg:px-16 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* Texto */}
+        <div className="flex flex-col space-y-8 hero-up">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05]">
+            Inovação e Tecnologia Movendo o <span style={{ color: GREEN }}>Agronegócio</span>
+          </h1>
 
-      {/* Decorative Blur Glows (Opcional, mantidos para consistência visual) */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(134, 215, 47, 0.05)' }} />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(245, 183, 0, 0.05)' }} />
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-16 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Left Content */}
-        <div className="flex flex-col justify-center space-y-8">
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-              O Futuro do Agronegócio É{' '}
-              <span style={{ color: '#86D72F' }}>Agora</span>
-            </h1>
-          </div>
-
-          <p className="text-lg md:text-xl max-w-lg" style={{ color: '#E5E5E5' }}>
-            Inteligência Artificial, Automação e Sustentabilidade transformando o campo. Junte-se a líderes da inovação agrícola.
+          <p className="text-lg md:text-xl max-w-lg leading-relaxed text-white/80">
+            Evento de Tecnologia e Inovação do Instituto Federal do Piauí
           </p>
 
-          {/* Event Info */}
-          <div className="flex flex-col md:flex-row gap-6 text-sm md:text-base">
-            <div>
-              <p style={{ color: '#BDBDBD' }}>Data</p>
-              <p className="text-white font-semibold">20 a 22 de outubro, 2026</p>
+          <div className="flex flex-col sm:flex-row gap-5 sm:gap-10">
+            <div className="flex items-center gap-3">
+              <Calendar className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-white font-medium">20 a 22 de outubro, 2026</span>
             </div>
-            <div>
-              <p style={{ color: '#BDBDBD' }}>Local</p>
-              <p className="text-white font-semibold">Floriano, Piauí</p>
+            <div className="flex items-center gap-3">
+              <MapPin className="w-5 h-5 text-white" strokeWidth={1.5} />
+              <span className="text-white font-medium">IFPI Campus Floriano</span>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          {/* Contagem simples */}
+          <div className="flex items-center gap-6">
+            {countdown.map((item) => (
+              <div key={item.label}>
+                <div className="text-3xl font-semibold tabular-nums text-white">
+                  {String(item.value).padStart(2, '0')}
+                </div>
+                <p className="text-[10px] uppercase tracking-widest text-white/50">{item.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <div>
             <button
-              className="px-8 py-3 font-bold rounded-lg transition-all duration-200 ease-out"
-              style={{
-                backgroundColor: '#F5B700',
-                color: '#081E13',
-                transform: 'scale(1)'
-              }}
-              onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.98)')}
-              onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              className="group px-8 py-3.5 font-bold rounded-xl inline-flex items-center gap-2 transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+              style={{ backgroundColor: GOLD, color: '#081E13' }}
             >
               Inscreva-se Agora
-            </button>
-            <button
-              className="px-8 py-3 flex items-center justify-center gap-2 rounded-lg transition-all duration-200 ease-out border-2"
-              style={{
-                borderColor: '#FFFFFF',
-                color: '#FFFFFF',
-                backgroundColor: 'transparent',
-                transform: 'scale(1)'
-              }}
-              onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.98)')}
-              onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#86D72F';
-                e.currentTarget.style.color = '#86D72F';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#FFFFFF';
-                e.currentTarget.style.color = '#FFFFFF';
-              }}
-            >
-              <Play size={18} />
-              Ver Vídeo
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
         </div>
 
-        {/* Right Side - Countdown Card with Glassmorphism */}
-        <div className="flex justify-center lg:justify-end">
-          <div
-            className="w-full max-w-md p-8 rounded-2xl border shadow-2xl"
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.08)',
-              backdropFilter: 'blur(16px)',
-              borderColor: 'rgba(255, 255, 255, 0.2)'
-            }}
-          >
-            <p className="text-xs mb-4 uppercase tracking-widest font-semibold" style={{ color: '#BDBDBD' }}>
-              Evento Começa Em
-            </p>
-            <div className="grid grid-cols-4 gap-3">
-              {[
-                { label: 'Dias', value: timeLeft.days },
-                { label: 'Horas', value: timeLeft.hours },
-                { label: 'Minutos', value: timeLeft.minutes },
-                { label: 'Segundos', value: timeLeft.seconds },
-              ].map((item) => (
-                <div key={item.label} className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold" style={{ color: '#86D72F' }}>
-                    {String(item.value).padStart(2, '0')}
-                  </div>
-                  <p className="text-xs mt-1" style={{ color: '#BDBDBD' }}>
-                    {item.label}
-                  </p>
-                </div>
-              ))}
+        {/* Imagem ao lado */}
+        <div className="hero-up" style={{ animationDelay: '.15s' }}>
+          <div className="relative max-w-md mx-auto lg:max-w-none lg:ml-auto">
+            {/* Contorno deslocado atrás da imagem */}
+            <div
+              className="absolute inset-0 translate-x-4 translate-y-4 border-2 rounded-tl-[9rem] rounded-br-[9rem] rounded-tr-[2rem] rounded-bl-[2rem]"
+              style={{ borderColor: 'rgba(134,215,47,0.5)' }}
+            />
+
+            {/* Imagem em formato de folha */}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-tl-[9rem] rounded-br-[9rem] rounded-tr-[2rem] rounded-bl-[2rem]">
+              <img
+                src={heroAgricultor}
+                alt="Agricultor no campo"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
+
+            {/* Detalhe: círculo dourado */}
+            <div
+              className="absolute -top-3 -right-3 w-8 h-8 rounded-full"
+              style={{ backgroundColor: GOLD }}
+            />
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-        <div className="w-6 h-10 border-2 rounded-full flex items-start justify-center p-2" style={{ borderColor: '#86D72F' }}>
-          <div className="w-1 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#86D72F' }} />
-        </div>
-      </div>
+      <style>{`
+        @keyframes heroUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+        .hero-up { opacity: 0; animation: heroUp .8s ease-out forwards; }
+        @media (prefers-reduced-motion: reduce) { .hero-up { animation: none; opacity: 1; } }
+      `}</style>
     </section>
   );
 }
