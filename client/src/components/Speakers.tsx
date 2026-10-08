@@ -1,3 +1,8 @@
+import isabella from '../images/palestrantes/isabella.jpeg';
+import camilo from '../images/palestrantes/camilo.jpeg';
+import luanny from '../images/palestrantes/luanny.jpeg';
+import lizandro from '../images/palestrantes/lizandro.jpeg';
+
 type Person = {
   name: string;
   role: string; // o que a pessoa é (cargo ou titulação)
@@ -6,79 +11,127 @@ type Person = {
   when: string; // dia e horário
   lattes: string; // link do currículo Lattes
   image: string;
+  imagePosition?: string;
+  imageZoom?: boolean;
 };
 
 const LATTES = 'https://lattes.cnpq.br/'; // troque pelo link real de cada pessoa
 
 const speakers: Person[] = [
   {
-    name: 'Dr. Carlos Silva',
-    role: 'Especialista em IA Agrícola',
-    institution: 'Instituição',
-    topic: 'Tema da palestra',
+    name: 'Isabella Maciel',
+    role: '',
+    institution: 'Fazenda Formosa (BA)',
+    topic: 'Força Feminina no Agro',
     when: 'Dia 20 · 08h às 10h',
     lattes: LATTES,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+    image: isabella,
+    imagePosition: 'center 62%',
+    imageZoom: true,
   },
   {
-    name: 'Dra. Marina Costa',
-    role: 'Diretora de Sustentabilidade',
-    institution: 'Instituição',
-    topic: 'Tema da palestra',
-    when: 'Dia 20 · 19h às 21h30',
+    name: 'Thais Trajano',
+    role: '',
+    institution: 'Célula de Inovação de Floriano',
+    topic: 'O Bem Estar Animal e seu Impacto nos Sistemas de Produção de Gado de Corte',
+    when: 'Dia 21 · 10h às 12h30',
+    lattes: 'https://lattes.cnpq.br/1085606389238096',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+  },
+  {
+    name: 'Ricardo Aboud',
+    role: '',
+    institution: 'Fazenda África',
+    topic: 'O Bem Estar Animal e seu Impacto nos Sistemas de Produção de Gado de Corte',
+    when: 'Dia 21 · 19h às 20h',
     lattes: LATTES,
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
   },
   {
-    name: 'Prof. João Santos',
-    role: 'Pesquisador em Automação',
-    institution: 'Instituição',
-    topic: 'Tema da palestra',
-    when: 'Dia 21 · 10h às 12h30',
+    name: 'Yana Rocha dos Reis Carvalho',
+    role: '',
+    institution: 'Fazenda Aliança',
+    topic: 'A contribuição da disponibilidade tecnológica na produção e beneficiamento de sementes para o aumento da produtividade.',
+    when: 'Dia 21 · 20h às 21h',
     lattes: LATTES,
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
   },
   {
-    name: 'Eng. Ana Oliveira',
-    role: 'Líder de Inovação Tecnológica',
-    institution: 'Instituição',
-    topic: 'Tema da palestra',
+    name: 'Luanny Emmanuelly',
+    role: '-',
+    institution: 'Virtex',
+    topic: 'Conectividade Estratégica: Liderando a Inovação e Escalando Resultados em Ecossistemas',
     when: 'Dia 22 · 10h às 12h30',
     lattes: LATTES,
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
+    image: luanny,
+    imagePosition: 'center 16%',
+  },
+  {
+    name: 'Camilo Saraiva',
+    role: 'Coordenador de Gente & Gestão',
+    institution: 'Fazenda Progresso',
+    topic: 'Além do Diploma: As Competências que o Agro do Futuro Procura',
+    when: 'Dia 22 · 19h às 20h',
+    lattes: LATTES,
+    image: camilo,
+    imagePosition: 'center 40%',
   },
 ];
 
 // Fotos fictícias (picsum.photos). Troque pelas fotos reais.
 const instructors: Person[] = [
-  { day: 'Dia 21', n: 1 },
-  { day: 'Dia 21', n: 2 },
-  { day: 'Dia 22', n: 1 },
-  { day: 'Dia 22', n: 2 },
-].map(({ day, n }) => ({
-  name: 'Nome do instrutor',
-  role: 'Cargo ou titulação',
-  institution: 'Instituição',
-  topic: 'Tema do minicurso',
-  when: `${day} · 14h às 18h`,
-  lattes: LATTES,
-  image: `https://picsum.photos/seed/minicurso-${day}-${n}/400/400`,
-}));
-
+  {
+    name: 'Prof. Tarso',
+    role: 'Cargo ou titulação',
+    institution: 'Drone Floriano Tecnologia no Campo',
+    topic: 'Uso de Drones como ferramenta de inspeção',
+    when: 'Dia 21 · 14h às 18h',
+    lattes: LATTES,
+    image: 'https://picsum.photos/seed/minicurso-1/400/400',
+  },
+  {
+    name: 'Prof. Ronaldo Pires Borges',
+    role: 'Professor Me. do IFPI',
+    institution: 'Instituto Federal do Piauí',
+    topic: 'IA sem nuvem: Executando LLMs Localmente',
+    when: 'Dia 21 · 14h às 18h',
+    lattes: LATTES,
+    image: 'https://picsum.photos/seed/minicurso-2/400/400',
+  },
+  {
+    name: 'Prof. Lizandro',
+    role: 'Professor Dr. do IFPI',
+    institution: 'Instituto Federal do Piauí',
+    topic: 'Aplicação do software R na análise de dados agrometeorológicos',
+    when: 'Dia 22 · 14h às 18h',
+    lattes: LATTES,
+    image: lizandro,
+  },
+  {
+    name: 'Weslley Silva de Sousa Ferreira',
+    role: 'Estudante',
+    institution: 'Instituto Federal do Piauí',
+    topic: 'Tema do quarto minicurso',
+    when: 'Dia 22 · 14h às 18h',
+    lattes: LATTES,
+    image: 'https://picsum.photos/seed/minicurso-4/400/400',
+  },
+];
 function PersonCard({ p }: { p: Person }) {
   return (
-    <div className="group relative w-full overflow-hidden rounded-2xl p-[2px] shadow-sm transition-shadow duration-300 hover:shadow-xl">
+    <div className="group relative h-full w-full overflow-hidden rounded-2xl p-[2px] shadow-sm transition-shadow duration-300 hover:shadow-xl">
       {/* Borda neon giratória */}
       <div className="absolute inset-0 animate-[spin_4s_linear_infinite] bg-gradient-to-r from-color-green-neon via-transparent to-color-green-neon opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-      <div className="relative z-10 overflow-hidden rounded-[14px] bg-[#0c2b16]">
+      <div className="relative z-10 flex h-full flex-col overflow-hidden rounded-[14px] bg-[#0c2b16]">
         {/* Foto com nome e cargo sobre a imagem */}
         <div className="relative h-40 overflow-hidden">
           <img
             src={p.image}
             alt={p.name}
             loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            style={{ objectPosition: p.imagePosition ?? 'center top' }}
+            className={`h-full w-full object-cover transition-transform duration-500 ${p.imageZoom ? 'scale-[2.2] group-hover:scale-[2.3]' : 'group-hover:scale-105'}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c2b16] via-[#0c2b16]/40 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 px-4 pb-3">
@@ -88,7 +141,7 @@ function PersonCard({ p }: { p: Person }) {
         </div>
 
         {/* Detalhes */}
-        <dl className="space-y-2 px-4 pb-4 pt-3 text-sm">
+        <dl className="flex-1 space-y-2 px-4 pb-4 pt-3 text-sm">
           <div>
             <dt className="text-xs text-green-50/50">Instituição</dt>
             <dd className="text-white/90">{p.institution}</dd>
@@ -133,9 +186,11 @@ function Group({ id, title, people }: { id?: string; title: string; people: Pers
       <h3 className="mb-5 border-b border-white/10 pb-3 text-xl font-semibold text-white md:text-2xl">
         {title}
       </h3>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {people.map((p, i) => (
-          <PersonCard key={i} p={p} />
+          <div key={i} className="h-full">
+            <PersonCard p={p} />
+          </div>
         ))}
       </div>
     </div>
