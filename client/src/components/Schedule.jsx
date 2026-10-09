@@ -1,5 +1,11 @@
 import { useState } from 'react';
-
+import isabella from '../images/palestrantes/isabella.jpeg';
+import samuel from '../images/palestrantes/samuel.jpeg';
+import layara from '../images/palestrantes/layara.jpeg';
+import camilo from '../images/palestrantes/camilo.jpeg';
+import luanny from '../images/palestrantes/luanny.jpeg';
+import lizandro from '../images/palestrantes/lizandro.jpeg';
+import sebrae from '../images/palestrantes/sebrae.jpeg';
 // Fotos fictícias (picsum.photos). Troque `photo` pela foto real de cada pessoa.
 const photo = (seed) => `https://picsum.photos/seed/${seed}/200/200`;
 
@@ -49,23 +55,26 @@ const DAYS = [
           theme: 'Força Feminina no Agro',
           location: 'Auditório',
           speaker: {
-            name: 'Isabella',
+            name: 'Isabella Maciel',
             institution: 'Fazenda Formosa',
-            image: photo('d20-a'),
+            image: isabella,
           },
         })],
       },
       {
         time: '10h30 - 12h',
-        items: [lecture('d20-b', {
-          theme: 'Empreender na Prática: Ideias que Transformam',
-          location: 'Auditório',
-          speaker: {
-            name: 'SEBRAE',
-            institution: 'SEBRAE',
-            image: photo('d20-b'),
+        items: [
+          {
+            type: 'Oficina',
+            theme: 'Empreender na Prática: Ideias que Transformam',
+            location: 'Auditório',
+            people: [person('d20-b', {
+              name: 'SEBRAE',
+              institution: 'SEBRAE',
+              image: sebrae,
+            })],
           },
-        })],
+        ],
       },
       {
         time: '19h - 21h30',
@@ -83,15 +92,15 @@ const DAYS = [
               }),
               person('d20-t2', {
                 role: 'Participante',
-                name: 'Professora Mirian',
-                institution: 'CTF',
-                image: photo('d20-t2'),
+                name: 'Samuel Coelho de Sá',
+                institution: 'Networks Solutions',
+                image: samuel,
               }),
               person('d20-t3', {
                 role: 'Participante',
-                name: 'Professora Laiara',
+                name: 'Layara Campelo',
                 institution: 'Instituto Federal do Piauí',
-                image: photo('d20-t3'),
+                image: layara,
               }),
             ],
           },
@@ -125,7 +134,7 @@ const DAYS = [
             people: [person('d21-o1', {
               name: 'Nome do palestrante',
               institution: 'SEBRAE',
-              image: photo('d21-o1'),
+              image: sebrae,
             })],
           },
         ],
@@ -143,7 +152,7 @@ const DAYS = [
             },
           }),
           course('d21-c2', {
-            theme: 'Tema do minicurso',
+            theme: ' IA sem Nuvem: Executando LLMs Localmente',
             location: 'Laboratório 3',
             speaker: {
               name: 'Prof. Me. Ronaldo Pires Borges',
@@ -190,7 +199,7 @@ const DAYS = [
           speaker: {
             name: 'Luanny Emmanuelly',
             institution: 'Virtex',
-            image: photo('d22-a'),
+            image: luanny,
           },
         })],
       },
@@ -203,7 +212,7 @@ const DAYS = [
             speaker: {
               name: 'Prof. Dr. Lizandro',
               institution: 'IFPI - Floriano',
-              image: photo('d22-c1'),
+              image: lizandro,
             },
           }),
           course('d22-c2', {
@@ -220,12 +229,12 @@ const DAYS = [
       {
         time: '19h – 20h',
         items: [lecture('d22-b', {
-          theme: 'Tema da palestra',
+          theme: 'Além do Diploma: As Competências que o Agro do Futuro Procura',
           location: 'Auditório',
           speaker: {
-            name: 'Nome do palestrante',
+            name: 'Camilo Saraiva',
             institution: 'Fazenda Progresso',
-            image: photo('d22-b'),
+            image: camilo,
           },
         })],
       },
@@ -235,7 +244,7 @@ const DAYS = [
           theme: 'Tema da palestra',
           location: 'Auditório',
           speaker: {
-            name: 'Nome do palestrante',
+            name: 'Fullzi',
             institution: 'Fullzi Tecnologia',
             image: photo('d22-c'),
           },
@@ -261,12 +270,14 @@ function Card({ item }) {
       <ul className={`mt-4 gap-4 ${featured ? 'grid sm:grid-cols-3' : 'space-y-3'}`}>
         {item.people.map((p, i) => (
           <li key={i} className="flex items-center gap-3">
-            <img
-              src={p.photo}
-              alt={`Foto de ${p.name}`}
-              loading="lazy"
-              className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-white/10"
-            />
+            <span className="h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-white/10">
+              <img
+                src={p.photo}
+                alt={p.photo === sebrae ? 'Logo do SEBRAE' : `Foto de ${p.name}`}
+                loading="lazy"
+                className={`h-full w-full object-cover ${p.name === 'Isabella Maciel' ? 'scale-[2.2] object-[center_62%]' : 'object-center'}`}
+              />
+            </span>
             <div className="min-w-0">
               {p.role && <p className="text-xs font-medium text-yellow-400">{p.role}</p>}
               <p className="truncate text-sm font-medium text-white">{p.name}</p>

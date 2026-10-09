@@ -72,6 +72,8 @@ export default function Statistics() {
                     alt={`Foto ${i + 1} da edição ${year}`}
                     loading="lazy"
                     className={`aspect-[4/3] w-full rounded-lg object-cover ${
+                      year === 2023 && i < 2 ? 'object-top' : ''
+                    } ${
                       i > 2 ? 'hidden sm:block' : ''
                     }`}
                   />
