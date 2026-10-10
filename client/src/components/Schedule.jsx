@@ -77,7 +77,7 @@ const DAYS = [
         })],
       },
       {
-        time: '10h30 - 12h',
+        time: '10h - 12h',
         items: [
           {
             type: 'Oficina',
@@ -216,7 +216,7 @@ const DAYS = [
     day: 22,
     slots: [
       {
-        time: '10h – 12h30',
+        time: '10h – 12h',
         items: [lecture('d22-a', {
           theme: 'Conectividade Estratégica: Liderando a Inovação e Escalando Resultados em Ecossistemas',
           location: 'Auditório',
@@ -228,11 +228,11 @@ const DAYS = [
         })],
       },
       {
-        time: '14h – 18h',
+        time: '14h – 17h',
         items: [
           course('d22-c1', {
             theme: ' Aplicação do software R na análise de dados agrometeorológicos.',
-            location: 'Local',
+            location: 'Laboratório J18',
             speaker: {
               name: 'Prof. Lizandro',
               institution: 'Instituto Federal do Piauí',
@@ -241,7 +241,7 @@ const DAYS = [
           }),
           course('d22-c2', {
             theme: 'Desenvolvimento de Site do Zero ao Profissional com IA',
-            location: 'Laboratório J18',
+            location: 'Laboratório 3',
             speaker: {
               name: 'Weslley Silva de Sousa Ferreira',
               institution: 'Instituto Federal do Piauí',
