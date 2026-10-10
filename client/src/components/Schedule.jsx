@@ -2,10 +2,19 @@ import { useState } from 'react';
 import isabella from '../images/palestrantes/isabella.jpeg';
 import samuel from '../images/palestrantes/samuel.jpeg';
 import layara from '../images/palestrantes/layara.jpeg';
+import ronaldo from '../images/palestrantes/ronaldo.jpeg';
+import robson from '../images/palestrantes/robson.jpeg';
+import thais from '../images/palestrantes/thais.jpeg';
 import camilo from '../images/palestrantes/camilo.jpeg';
+import luciano from '../images/palestrantes/luciano.jpeg';
 import luanny from '../images/palestrantes/luanny.jpeg';
 import lizandro from '../images/palestrantes/lizandro.jpeg';
+import tarso from '../images/palestrantes/tarso.jpeg';
+import weslley from '../images/palestrantes/weslley.jpeg';
+import yana from '../images/palestrantes/yana.jpeg';
+import ricardo from '../images/palestrantes/ricardo.jpeg';
 import sebrae from '../images/palestrantes/sebrae.jpeg';
+import fullzi from '../images/palestrantes/fullzi.jpeg';
 // Fotos fictícias (picsum.photos). Troque `photo` pela foto real de cada pessoa.
 const photo = (seed) => `https://picsum.photos/seed/${seed}/200/200`;
 
@@ -14,11 +23,15 @@ const person = (seed, {
   name = 'Nome do palestrante',
   institution = 'Instituição',
   image = photo(seed),
+  imagePosition,
+  imageClassName,
 } = {}) => ({
   name,
   institution,
   role,
   photo: image,
+  imagePosition,
+  imageClassName,
 });
 
 const lecture = (seed, {
@@ -58,6 +71,8 @@ const DAYS = [
             name: 'Isabella Maciel',
             institution: 'Fazenda Formosa',
             image: isabella,
+            imagePosition: 'center 62%',
+            imageClassName: 'scale-[2.2]',
           },
         })],
       },
@@ -67,7 +82,7 @@ const DAYS = [
           {
             type: 'Oficina',
             theme: 'Empreender na Prática: Ideias que Transformam',
-            location: 'Auditório',
+            location: 'Miniauditório',
             people: [person('d20-b', {
               name: 'SEBRAE',
               institution: 'SEBRAE',
@@ -82,13 +97,13 @@ const DAYS = [
           {
             type: 'Talk show',
             theme: 'Do campo ao futuro: como a tecnologia e a inovação estão transformando o agronegócio',
-            location: 'Local',
+            location: 'Auditório',
             people: [
               person('d20-t1', {
                 role: 'Mediador',
-                name: 'Prof Dr. Robson Freitas',
+                name: 'Prof Robson Freitas',
                 institution: 'Instituto Federal do Piauí',
-                image: photo('d20-t1'),
+                image: robson,
               }),
               person('d20-t2', {
                 role: 'Participante',
@@ -101,6 +116,12 @@ const DAYS = [
                 name: 'Layara Campelo',
                 institution: 'Instituto Federal do Piauí',
                 image: layara,
+              }),
+              person('d20-t4', {
+                role: 'Participante',
+                name: 'Luciano Portelo',
+                institution: 'Fazenda Canel',
+                image: luciano,
               }),
             ],
           },
@@ -120,7 +141,9 @@ const DAYS = [
           speaker: {
             name: 'Thais Trajano',
             institution: 'Célula de Inovação de Floriano',
-            image: photo('d21-a'),
+            image: thais,
+            imagePosition: 'center top',
+            imageClassName: 'origin-right scale-[2]',
           },
         })],
       },
@@ -130,9 +153,9 @@ const DAYS = [
           {
             type: 'Oficina',
             theme: 'Da ideia ao modelo de negócio: empreendendo na prática',
-            location: 'Auditório',
+            location: 'Miniauditório',
             people: [person('d21-o1', {
-              name: 'Nome do palestrante',
+              name: 'SEBRAE',
               institution: 'SEBRAE',
               image: sebrae,
             })],
@@ -144,20 +167,21 @@ const DAYS = [
         items: [
           course('d21-c1', {
             theme: 'Uso de Drones como ferramenta de inspeção',
-            location: 'Local',
+            location: 'Laboratório J18',
             speaker: {
               name: 'Prof. Tarso',
               institution: 'Drone Floriano Tecnologia no Campo',
-              image: photo('d21-c1'),
+              image: tarso,
+              imagePosition: '75% center',
             },
           }),
           course('d21-c2', {
             theme: ' IA sem Nuvem: Executando LLMs Localmente',
             location: 'Laboratório 3',
             speaker: {
-              name: 'Prof. Me. Ronaldo Pires Borges',
-              institution: 'IFPI - FLORIANO',
-              image: photo('d21-c2'),
+              name: 'Prof. Ronaldo Pires Borges',
+              institution: 'Instituto Federal do Piauí',
+              image: ronaldo,
             },
           }),
         ],
@@ -170,7 +194,7 @@ const DAYS = [
           speaker: {
             name: 'Ricardo Aboud',
             institution: 'Fazenda África',
-            image: photo('d21-b'),
+            image: ricardo,
           },
         })],
       },
@@ -182,7 +206,7 @@ const DAYS = [
           speaker: {
             name: 'Yana Rocha dos Reis Carvalho',
             institution: 'Fazenda Aliança',
-            image: photo('d21-c'),
+            image: yana,
           },
         })],
       },
@@ -199,7 +223,7 @@ const DAYS = [
           speaker: {
             name: 'Luanny Emmanuelly',
             institution: 'Virtex',
-            image: luanny,
+            image: luanny
           },
         })],
       },
@@ -210,8 +234,8 @@ const DAYS = [
             theme: ' Aplicação do software R na análise de dados agrometeorológicos.',
             location: 'Local',
             speaker: {
-              name: 'Prof. Dr. Lizandro',
-              institution: 'IFPI - Floriano',
+              name: 'Prof. Lizandro',
+              institution: 'Instituto Federal do Piauí',
               image: lizandro,
             },
           }),
@@ -220,8 +244,8 @@ const DAYS = [
             location: 'Laboratório J18',
             speaker: {
               name: 'Weslley Silva de Sousa Ferreira',
-              institution: 'Instituição',
-              image: photo('d22-c2'),
+              institution: 'Instituto Federal do Piauí',
+              image: weslley,
             },
           }),
         ],
@@ -241,12 +265,12 @@ const DAYS = [
       {
         time: '20h – 21h',
         items: [lecture('d22-c', {
-          theme: 'Tema da palestra',
+          theme: 'Tecnologia, Conectividade e Inovação',
           location: 'Auditório',
           speaker: {
             name: 'Fullzi',
             institution: 'Fullzi Tecnologia',
-            image: photo('d22-c'),
+            image: fullzi,
           },
         })],
       },
@@ -267,7 +291,7 @@ function Card({ item }) {
 
       <h4 className="mt-3 text-lg font-semibold leading-snug text-white">{item.theme}</h4>
 
-      <ul className={`mt-4 gap-4 ${featured ? 'grid sm:grid-cols-3' : 'space-y-3'}`}>
+      <ul className={`mt-4 gap-4 ${featured ? 'grid sm:grid-cols-2' : 'space-y-3'}`}>
         {item.people.map((p, i) => (
           <li key={i} className="flex items-center gap-3">
             <span className="h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-white/10">
@@ -275,7 +299,8 @@ function Card({ item }) {
                 src={p.photo}
                 alt={p.photo === sebrae ? 'Logo do SEBRAE' : `Foto de ${p.name}`}
                 loading="lazy"
-                className={`h-full w-full object-cover ${p.name === 'Isabella Maciel' ? 'scale-[2.2] object-[center_62%]' : 'object-center'}`}
+                style={{ objectPosition: p.imagePosition ?? 'center' }}
+                className={`h-full w-full object-cover ${p.imageClassName ?? ''}`}
               />
             </span>
             <div className="min-w-0">

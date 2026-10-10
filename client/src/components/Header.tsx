@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import logoinova from "../images/Logo-Inova.png";
+import { REGISTER_URL } from '../lib/links';
 
 const navItems = [
   { label: 'Sobre', href: '#sobre' },
@@ -62,7 +63,10 @@ export default function Header() {
 
         {/* CTA Button (Desktop e Tablets Grandes) */}
         <div className="hidden sm:block shrink-0">
-          <button
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 py-2 md:px-6 md:py-2.5 lg:px-8 lg:py-3 text-xs md:text-sm lg:text-base font-bold rounded-lg transition-all duration-200 ease-out hover:brightness-110 active:scale-95 shadow-md"
             style={{
               backgroundColor: '#F5B700',
@@ -70,7 +74,7 @@ export default function Header() {
             }}
           >
             Inscreva-se
-          </button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -103,15 +107,18 @@ export default function Header() {
 
             {/* Botão no menu mobile visível apenas em telas bem pequenas */}
             <div className="pt-2 sm:hidden">
-              <button
-                className="w-full py-3 text-base font-bold rounded-lg transition-all duration-200 active:scale-98 shadow-md"
+              <a
+                href={REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full py-3 text-center text-base font-bold rounded-lg transition-all duration-200 active:scale-98 shadow-md"
                 style={{
                   backgroundColor: '#F5B700',
                   color: '#081E13',
                 }}
               >
                 Inscreva-se
-              </button>
+              </a>
             </div>
           </div>
         </nav>

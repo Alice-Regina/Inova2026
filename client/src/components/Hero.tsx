@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Calendar, MapPin, ArrowRight } from 'lucide-react';
 import heroAgricultor from '../images/hero-agricultor.png';
+import { REGISTER_URL } from '../lib/links';
 
 // 20 de outubro de 2026, 08:00 (horário local)
 const EVENT_DATE = new Date(2026, 9, 20, 8, 0, 0).getTime();
@@ -70,13 +71,16 @@ export default function Hero() {
           </div>
 
           <div>
-            <button
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group px-8 py-3.5 font-bold rounded-xl inline-flex items-center gap-2 transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
               style={{ backgroundColor: GOLD, color: '#081E13' }}
             >
               Inscreva-se Agora
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
+            </a>
           </div>
         </div>
 
