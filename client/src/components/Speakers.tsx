@@ -1,7 +1,13 @@
 import isabella from '../images/palestrantes/isabella.jpeg';
 import camilo from '../images/palestrantes/camilo.jpeg';
+import thais from '../images/palestrantes/thais.jpeg';
 import luanny from '../images/palestrantes/luanny.jpeg';
 import lizandro from '../images/palestrantes/lizandro.jpeg';
+import ronaldo from '../images/palestrantes/ronaldo.jpeg';
+import ricardo from '../images/palestrantes/ricardo.jpeg';
+import yana from '../images/palestrantes/yana.jpeg';
+import weslley from '../images/palestrantes/weslley.jpeg';
+import tarso from '../images/palestrantes/tarso.jpeg';
 
 type Person = {
   name: string;
@@ -13,6 +19,7 @@ type Person = {
   image: string;
   imagePosition?: string;
   imageZoom?: boolean;
+  imageZoomRight?: boolean;
 };
 
 const LATTES = 'https://lattes.cnpq.br/'; // troque pelo link real de cada pessoa
@@ -20,7 +27,7 @@ const LATTES = 'https://lattes.cnpq.br/'; // troque pelo link real de cada pesso
 const speakers: Person[] = [
   {
     name: 'Isabella Maciel',
-    role: '',
+    role: 'Formosa do Rio Preto',
     institution: 'Fazenda Formosa (BA)',
     topic: 'Força Feminina no Agro',
     when: 'Dia 20 · 08h às 10h',
@@ -31,34 +38,38 @@ const speakers: Person[] = [
   },
   {
     name: 'Thais Trajano',
-    role: '',
+    role: 'Agente de Inovação',
     institution: 'Célula de Inovação de Floriano',
-    topic: 'O Bem Estar Animal e seu Impacto nos Sistemas de Produção de Gado de Corte',
+    topic: 'Do Apiário à Inovação: Como a Tecnologia Está Transformando a Apicultura e Movendo o Agronegócio',
     when: 'Dia 21 · 10h às 12h30',
     lattes: 'https://lattes.cnpq.br/1085606389238096',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+    image: thais,
+    imagePosition: 'center 28%',
+    imageZoomRight: true,
   },
   {
     name: 'Ricardo Aboud',
-    role: '',
+    role: 'Engenheiro Civil e de Petróleo',
     institution: 'Fazenda África',
     topic: 'O Bem Estar Animal e seu Impacto nos Sistemas de Produção de Gado de Corte',
     when: 'Dia 21 · 19h às 20h',
     lattes: LATTES,
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+    image: ricardo,
+    imagePosition: 'center 35%',
   },
   {
     name: 'Yana Rocha dos Reis Carvalho',
-    role: '',
+    role: 'Engenheira Agrônoma',
     institution: 'Fazenda Aliança',
     topic: 'A contribuição da disponibilidade tecnológica na produção e beneficiamento de sementes para o aumento da produtividade.',
     when: 'Dia 21 · 20h às 21h',
     lattes: LATTES,
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
+    image: yana,
+    imagePosition: 'center 28%',
   },
   {
     name: 'Luanny Emmanuelly',
-    role: '-',
+    role: 'Gestora de Marketing',
     institution: 'Virtex',
     topic: 'Conectividade Estratégica: Liderando a Inovação e Escalando Resultados em Ecossistemas',
     when: 'Dia 22 · 10h às 12h30',
@@ -82,21 +93,23 @@ const speakers: Person[] = [
 const instructors: Person[] = [
   {
     name: 'Prof. Tarso',
-    role: 'Cargo ou titulação',
+    role: 'Engenheiro Civil',
     institution: 'Drone Floriano Tecnologia no Campo',
     topic: 'Uso de Drones como ferramenta de inspeção',
     when: 'Dia 21 · 14h às 18h',
     lattes: LATTES,
-    image: 'https://picsum.photos/seed/minicurso-1/400/400',
+    image: tarso,
+    imagePosition: 'center 20%',
   },
   {
-    name: 'Prof. Ronaldo Pires Borges',
+    name: 'Prof. Ronaldo',
     role: 'Professor Me. do IFPI',
     institution: 'Instituto Federal do Piauí',
     topic: 'IA sem nuvem: Executando LLMs Localmente',
     when: 'Dia 21 · 14h às 18h',
     lattes: LATTES,
-    image: 'https://picsum.photos/seed/minicurso-2/400/400',
+    image: ronaldo,
+    imagePosition: 'center 35%',
   },
   {
     name: 'Prof. Lizandro',
@@ -106,18 +119,19 @@ const instructors: Person[] = [
     when: 'Dia 22 · 14h às 18h',
     lattes: LATTES,
     image: lizandro,
+    imagePosition: 'center 30%',
   },
   {
-    name: 'Weslley Silva de Sousa Ferreira',
+    name: 'Weslley Silva',
     role: 'Estudante',
     institution: 'Instituto Federal do Piauí',
-    topic: 'Tema do quarto minicurso',
+    topic: 'Desenvolvimento de Site do Zero ao Profissional com IA',
     when: 'Dia 22 · 14h às 18h',
     lattes: LATTES,
-    image: 'https://picsum.photos/seed/minicurso-4/400/400',
+    image: weslley,
   },
 ];
-function PersonCard({ p }: { p: Person }) {
+function PersonCard({ p, tallPhoto = false }: { p: Person; tallPhoto?: boolean }) {
   return (
     <div className="group relative h-full w-full overflow-hidden rounded-2xl p-[2px] shadow-sm transition-shadow duration-300 hover:shadow-xl">
       {/* Borda neon giratória */}
@@ -125,13 +139,13 @@ function PersonCard({ p }: { p: Person }) {
 
       <div className="relative z-10 flex h-full flex-col overflow-hidden rounded-[14px] bg-[#0c2b16]">
         {/* Foto com nome e cargo sobre a imagem */}
-        <div className="relative h-40 overflow-hidden">
+        <div className={`relative overflow-hidden ${tallPhoto ? 'h-60 lg:h-64' : 'h-56'}`}>
           <img
             src={p.image}
             alt={p.name}
             loading="lazy"
             style={{ objectPosition: p.imagePosition ?? 'center top' }}
-            className={`h-full w-full object-cover transition-transform duration-500 ${p.imageZoom ? 'scale-[2.2] group-hover:scale-[2.3]' : 'group-hover:scale-105'}`}
+            className={`h-full w-full object-cover transition-transform duration-500 ${p.imageZoom ? 'scale-[2.2] group-hover:scale-[2.3]' : p.imageZoomRight ? 'origin-right scale-[1.35] group-hover:scale-[1.4]' : 'group-hover:scale-105'}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c2b16] via-[#0c2b16]/40 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 px-4 pb-3">
@@ -180,16 +194,16 @@ function PersonCard({ p }: { p: Person }) {
   );
 }
 
-function Group({ id, title, people }: { id?: string; title: string; people: Person[] }) {
+function Group({ id, title, people, columns = 4, tallPhotos = false }: { id?: string; title: string; people: Person[]; columns?: 3 | 4; tallPhotos?: boolean }) {
   return (
     <div id={id} className="scroll-mt-24">
       <h3 className="mb-5 border-b border-white/10 pb-3 text-xl font-semibold text-white md:text-2xl">
         {title}
       </h3>
-      <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className={`grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 ${columns === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}>
         {people.map((p, i) => (
           <div key={i} className="h-full">
-            <PersonCard p={p} />
+            <PersonCard p={p} tallPhoto={tallPhotos} />
           </div>
         ))}
       </div>
@@ -211,7 +225,7 @@ export default function Speakers() {
         </div>
 
         <div className="space-y-12">
-          <Group title="Palestras" people={speakers} />
+          <Group title="Palestras" people={speakers} columns={3} tallPhotos />
           <Group id="minicursos" title="Minicursos" people={instructors} />
         </div>
       </div>

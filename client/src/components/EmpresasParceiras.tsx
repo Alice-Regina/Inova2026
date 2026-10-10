@@ -10,6 +10,10 @@ import geleia from '../images/patrocinio/Geleia.png';
 import magno from '../images/patrocinio/MAGNO.png';
 import danilo from '../images/patrocinio/Danilo.png';
 import james from '../images/patrocinio/Logomarca James Rodrigues contorno branco.png';
+import quick from '../images/patrocinio/quick.png';
+import usePrata from '../images/patrocinio/useprata-sem-fundo.png';
+import unifaesfCampus from '../images/patrocinio/unifaesfcampus.png';
+import cef from '../images/patrocinio/cef.png';
 
 const empresas = [
   { name: 'Virtex Telecom', image: Virtex, link: 'https://virtex.com.br/floriano' },
@@ -19,11 +23,15 @@ const empresas = [
   { name: 'Fullzi', image: fullzi, link: 'https://www.fullzi.com.br/' },
   { name: 'Sobral', image: sobral, link: 'https://www.laboratoriosobral.com.br/' },
   { name: 'Sal de Parilla', image: parilla, link: 'https://www.instagram.com/saldeparrillaoficial/' },
-  { name: 'BOB Espeto', image: bob, link: '#' },
+  { name: 'BOB Espeto', image: bob, link: 'https://www.instagram.com/bob.espeto/' },
   { name: 'Geleia Gourmet', image: geleia, link: '#' },
   { name: 'Magno', image: magno, link: '#' },
   { name: 'James', image: james, link: '#' },
   { name: 'Danilo Martins Galalau', image: danilo, link: '#', compactImage: true },
+  { name: 'Quick', image: quick, link: 'https://quicksorvetes.com.br/' },
+  { name: 'Use Prata', image: usePrata, link: 'https://www.instagram.com/usepratamerma/' },
+  { name: 'Unifaesf Campus Arudá Bucar', image: unifaesfCampus, link: 'https://unifaesf.edu.br/' },
+  { name: 'Centro Educacional de Floriano (CEF)', image: cef, link: 'https://cefedu.com.br/' },
 ];
 
 export default function EmpresasParceiras() {
@@ -50,13 +58,14 @@ export default function EmpresasParceiras() {
         <ul className="mx-auto flex w-full max-w-6xl flex-wrap justify-center gap-x-6 gap-y-6 md:gap-x-12 md:gap-y-8" aria-label="Marcas parceiras">
           {empresas.map((empresa) => {
             const hasLink = empresa.link !== '#';
+            const isCef = empresa.name === 'Centro Educacional de Floriano (CEF)';
             const logo = (
               <div className="flex h-full w-full items-center justify-center rounded-lg">
                 <img
                   src={empresa.image}
                   alt={`Logo ${empresa.name}`}
                   decoding="async"
-                  className={`w-full max-h-full transition-transform duration-300 group-hover:scale-105 group-focus-visible:scale-105 motion-reduce:transition-none motion-reduce:transform-none ${empresa.compactImage ? 'aspect-[2/1] h-auto object-cover' : 'h-full object-contain'}`}
+                  className={`w-full max-h-full transition-transform duration-300 motion-reduce:transition-none motion-reduce:transform-none ${isCef ? 'scale-[1.5] group-hover:scale-[1.55] group-focus-visible:scale-[1.55]' : 'group-hover:scale-105 group-focus-visible:scale-105'} ${empresa.compactImage ? 'aspect-[2/1] h-auto object-cover' : 'h-full object-contain'}`}
                 />
               </div>
             );

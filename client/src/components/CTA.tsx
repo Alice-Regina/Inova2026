@@ -1,6 +1,6 @@
 import CTABackground from "../images/CTAbackground.png";
+import { REGISTER_URL } from '../lib/links';
 
-const REGISTER_URL = "#"; // troque pelo link de inscrição
 const SCHEDULE_ID = "#cronograma"; // adicione id="cronograma" na section do Schedule
 
 export default function CTA() {
@@ -45,6 +45,8 @@ export default function CTA() {
         <div className="flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
           <a
             href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full rounded-lg bg-[#F5B700] px-8 py-3 text-center font-bold text-[#081E13] transition duration-200 hover:bg-yellow-300 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:w-auto"
           >
             Inscreva-se
